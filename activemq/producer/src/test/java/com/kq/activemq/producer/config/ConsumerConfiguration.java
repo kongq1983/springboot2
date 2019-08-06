@@ -22,9 +22,9 @@ import javax.jms.Session;
  */
 
 @Configuration
-public class ProducerConfiguration {
+public class ConsumerConfiguration {
 
-    protected Logger logger = LoggerFactory.getLogger(ProducerConfiguration.class);
+    protected Logger logger = LoggerFactory.getLogger(ConsumerConfiguration.class);
 
     @Bean // Serialize message content to json using TextMessage
     public MessageConverter jacksonJmsMessageConverter() {
