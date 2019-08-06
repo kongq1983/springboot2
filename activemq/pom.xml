@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
 
-    <groupId>com.kq</groupId>
+    <groupId>com.kq.springboot2</groupId>
     <artifactId>activemq</artifactId>
     <packaging>pom</packaging>
     <modules>
@@ -48,6 +48,12 @@
             <version>5.15.9</version>
 
         </dependency>-->
+
+        <dependency>
+            <groupId>com.kq.springboot2</groupId>
+            <artifactId>common</artifactId>
+            <version>${mycommon.version}</version>
+        </dependency>
 
     </dependencies>
 
