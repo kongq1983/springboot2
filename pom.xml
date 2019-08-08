@@ -11,6 +11,7 @@
         <module>common</module>
         <module>activemq</module>
         <module>rabbitmq</module>
+        <module>springmvc</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -39,6 +40,7 @@
         <lettuce.version>5.1.7.RELEASE</lettuce.version>
         <caffeine.version>2.7.0</caffeine.version>
         <mycommon.version>1.0-SNAPSHOT</mycommon.version>
+        <lombok.version>1.18.8</lombok.version>
     </properties>
 
 
@@ -61,6 +63,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
