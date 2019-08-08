@@ -2,8 +2,8 @@
 spring:
   application:
       name: activemq-consumer
-#  activemq:
-#    broker-url: tcp://mq.server1.com:61616
+  activemq:
+    broker-url: tcp://mq.server1.com:61616
     #user: admin
     #password: secret
 

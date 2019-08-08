@@ -30,8 +30,8 @@ public class SendMailScheduled {
 
 
     @Autowired
-    @Qualifier("jmsTopicTemplate")
-    private JmsTemplate jmsTopicTemplate1;
+    @Qualifier("jmsStringTopicTemplate")
+    private JmsTemplate jmsStringTopicTemplate;
 
     private AtomicInteger ato = new AtomicInteger();
 
@@ -46,7 +46,7 @@ public class SendMailScheduled {
         logger.info("index={} , start run send mail. ",num);
 
         jmsTopicTemplate.convertAndSend(DestinationConstants.TOPIC.MAIL_TOPIC_NAME, new Email("info-1@example.com", "Hello"+num));
-        jmsTopicTemplate1.convertAndSend(DestinationConstants.TOPIC.MAIL_TOPIC_NAME, new Email("info-2@example.com", "Hello"+num));
+        jmsStringTopicTemplate.convertAndSend(DestinationConstants.TOPIC.STRING_TOPIC_NAME, "welcome to you ! index="+num);
     }
 
 

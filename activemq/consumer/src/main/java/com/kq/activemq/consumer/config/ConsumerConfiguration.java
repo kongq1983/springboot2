@@ -1,4 +1,4 @@
-package com.kq.activemq.producer.config;
+package com.kq.activemq.consumer.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,9 +22,9 @@ import javax.jms.Session;
  */
 
 @Configuration
-public class ProducerConfiguration {
+public class ConsumerConfiguration {
 
-    protected Logger logger = LoggerFactory.getLogger(ProducerConfiguration.class);
+    protected Logger logger = LoggerFactory.getLogger(ConsumerConfiguration.class);
 
     @Bean // Serialize message content to json using TextMessage
     public MessageConverter jacksonJmsMessageConverter() {

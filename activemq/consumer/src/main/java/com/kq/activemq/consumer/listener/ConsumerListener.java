@@ -19,8 +19,14 @@ public class ConsumerListener {
     protected Logger logger = LoggerFactory.getLogger(ConsumerListener.class);
 
     @JmsListener(destination = DestinationConstants.TOPIC.MAIL_TOPIC_NAME)
-    public void receive(Email email) {
+    public void receiveEmail(Email email) {
         logger.info("received email : {} ",email);
+    }
+
+
+    @JmsListener(destination = DestinationConstants.TOPIC.STRING_TOPIC_NAME)
+    public void receiveString(String email) {
+        logger.info("received string : {} ",email);
     }
 
 
