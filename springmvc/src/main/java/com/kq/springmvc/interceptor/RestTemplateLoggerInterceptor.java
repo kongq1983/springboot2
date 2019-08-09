@@ -1,5 +1,7 @@
 package com.kq.springmvc.interceptor;
 
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.io.IOUtils;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.client.ClientHttpRequestExecution;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -7,11 +9,51 @@ import org.springframework.http.client.ClientHttpResponse;
 
 import java.io.IOException;
 
+@Slf4j
 public class RestTemplateLoggerInterceptor implements ClientHttpRequestInterceptor {
 
 
     @Override
-    public ClientHttpResponse intercept(HttpRequest httpRequest, byte[] bytes, ClientHttpRequestExecution clientHttpRequestExecution) throws IOException {
-        return null;
+    public ClientHttpResponse intercept(HttpRequest request, byte[] body, ClientHttpRequestExecution execution) throws IOException {
+        traceRequest(request, body);
+        ClientHttpResponse response = execution.execute(request, body);
+        traceResponse(response);
+        return response;
+
     }
+
+    private void traceRequest(HttpRequest request, byte[] body) throws IOException {
+        log.debug("===========================request begin================================================");
+        log.debug("URI         : {}", request.getURI());
+        log.debug("Method      : {}", request.getMethod());
+        log.debug("Headers     : {}", request.getHeaders());
+//        log.debug("Port        : {}", request.);
+        log.debug("Request body: {}", new String(body, "UTF-8"));
+        log.debug("==========================request end================================================");
+    }
+
+    private void traceResponse(ClientHttpResponse response) throws IOException {
+//        StringBuilder inputStringBuilder = new StringBuilder();
+////        try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(response.getBody(), "UTF-8"))) {
+//        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(response.getBody(), "UTF-8"));
+//        String line = bufferedReader.readLine();
+//        while (line != null) {
+//            inputStringBuilder.append(line);
+//            inputStringBuilder.append('\n');
+//            line = bufferedReader.readLine();
+//        }
+
+//        String content = IOUtils.resourceToString()
+
+
+//        }
+        log.debug("============================response begin==========================================");
+        log.debug("Status code  : {}", response.getStatusCode());
+        log.debug("Status text  : {}", response.getStatusText());
+        log.debug("Headers      : {}", response.getHeaders());
+//        log.debug("Response body: {}", inputStringBuilder.toString());//WARNING: comment out in production to improve performance
+        log.debug("=======================response end=================================================");
+    }
+
+
 }

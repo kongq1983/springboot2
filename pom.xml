@@ -41,7 +41,25 @@
         <caffeine.version>2.7.0</caffeine.version>
         <mycommon.version>1.0-SNAPSHOT</mycommon.version>
         <lombok.version>1.18.8</lombok.version>
+        <fastjson.version>1.2.29</fastjson.version>
+        <fastjson.version>1.2.29</fastjson.version>
     </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${common.io.version}</version>
+            </dependency>
+
+        </dependencies>
+
+
+    </dependencyManagement>
 
 
     <dependencies>
