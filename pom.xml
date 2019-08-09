@@ -11,6 +11,7 @@
         <module>common</module>
         <module>activemq</module>
         <module>rabbitmq</module>
+        <module>springmvc</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -39,6 +40,7 @@
         <lettuce.version>5.1.7.RELEASE</lettuce.version>
         <caffeine.version>2.7.0</caffeine.version>
         <mycommon.version>1.0-SNAPSHOT</mycommon.version>
+        <lombok.version>1.18.8</lombok.version>
     </properties>
 
 
@@ -57,20 +59,17 @@
             <version>${common.lang3.version}</version>
         </dependency>
 
-
-        <!-- 测试 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
-
-        <!-- 热加载 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
@@ -78,19 +77,6 @@
 
     <build>
         <plugins>
-
-            <!--
-                用于将应用打成可直接运行的jar（该jar就是用于生产环境中的jar）
-                值得注意的是，如果没有引用spring-boot-starter-parent做parent，
-                且采用了上述的第二种方式，这里也要做出相应的改动 -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <fork>true</fork><!-- 如果没有该项配置，肯呢个devtools不会起作用，即应用不会restart -->
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
