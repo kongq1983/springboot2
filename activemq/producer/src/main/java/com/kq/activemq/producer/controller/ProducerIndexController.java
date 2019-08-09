@@ -29,7 +29,7 @@ public class ProducerIndexController {
     public Map<String,String> index() {
 
         Map<String,String> map = new HashMap<>();
-        map.put("name","king-18");
+        map.put("name","king-23");
 
         return map;
 
