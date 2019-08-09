@@ -42,11 +42,28 @@ public class ProducerConfiguration {
         logger.info("PropertyMapper={}",map);
 
         JmsTemplate template = new JmsTemplate(connectionFactory);
-        template.setMessageConverter(this.jacksonJmsMessageConverter());
+//        template.setMessageConverter(this.jacksonJmsMessageConverter());
         // template.setDestinationResolver(destinationResolver);
         template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
 
         logger.info("queueJmsTemplate messageConverter={}",template.getMessageConverter());
+
+        return template;
+    }
+
+
+    @Bean
+    public JmsTemplate queueJsonJmsTemplate(ConnectionFactory connectionFactory) {
+        PropertyMapper map = PropertyMapper.get();
+
+        logger.info("PropertyMapper={}",map);
+
+        JmsTemplate template = new JmsTemplate(connectionFactory);
+        template.setMessageConverter(this.jacksonJmsMessageConverter());
+        // template.setDestinationResolver(destinationResolver);
+        template.setSessionAcknowledgeMode(Session.AUTO_ACKNOWLEDGE);
+
+        logger.info("queueJsonJmsTemplate messageConverter={}",template.getMessageConverter());
 
         return template;
     }

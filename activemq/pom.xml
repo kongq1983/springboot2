@@ -50,6 +50,11 @@
         </dependency>-->
 
         <dependency>
+            <groupId>org.messaginghub</groupId>
+            <artifactId>pooled-jms</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>com.kq.springboot2</groupId>
             <artifactId>common</artifactId>
             <version>${mycommon.version}</version>

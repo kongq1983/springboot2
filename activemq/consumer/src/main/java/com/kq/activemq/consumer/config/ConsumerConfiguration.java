@@ -6,6 +6,8 @@ import org.springframework.boot.context.properties.PropertyMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.jms.config.JmsListenerContainerFactory;
+import org.springframework.jms.config.SimpleJmsListenerContainerFactory;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
 import org.springframework.jms.support.converter.MessageConverter;
@@ -33,6 +35,19 @@ public class ConsumerConfiguration {
         converter.setTypeIdPropertyName("_type");
         return converter;
     }
+
+
+    @Bean(name="myJmsContainerFactory")
+    JmsListenerContainerFactory<?> myJmsContainerFactory(ConnectionFactory connectionFactory){
+
+        logger.info("myJmsContainerFactory={}",connectionFactory);
+
+        SimpleJmsListenerContainerFactory factory = new SimpleJmsListenerContainerFactory();
+        factory.setConnectionFactory(connectionFactory);
+//        factory.setPubSubDomain(true);
+        return factory;
+    }
+
 
     @Primary
     @Bean

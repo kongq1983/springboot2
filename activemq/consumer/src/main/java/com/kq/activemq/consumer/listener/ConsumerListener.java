@@ -30,4 +30,16 @@ public class ConsumerListener {
     }
 
 
+    @JmsListener(destination = DestinationConstants.QUEUE.STRING_QUEUE_NAME,containerFactory = "myJmsContainerFactory")
+    public void receiveQueueString(String msg) {
+        logger.info("received queue string : {} ",msg);
+    }
+
+
+    @JmsListener(destination = DestinationConstants.QUEUE.JSON_QUEUE_NAME)
+    public void receiveQueueEmail(Email email) {
+        logger.info("receiveQueueEmail : {} ",email);
+    }
+
+
 }

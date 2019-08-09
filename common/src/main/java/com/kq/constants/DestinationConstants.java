@@ -15,4 +15,11 @@ public class DestinationConstants {
 
     }
 
+    public static class QUEUE {
+
+        public  static final String STRING_QUEUE_NAME = "com.string.queue";
+        public  static final String JSON_QUEUE_NAME = "com.json.queue";
+
+    }
+
 }
