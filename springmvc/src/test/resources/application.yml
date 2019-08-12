@@ -15,4 +15,3 @@ server:
     context-path: /
 #    context-path: /producer
 
-abc: 1
