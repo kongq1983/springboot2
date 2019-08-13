@@ -22,3 +22,14 @@ my:
   name: 170
   port: 12000
   username: root
+
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: DEBUG
+    com:
+      kq: DEBUG
+
