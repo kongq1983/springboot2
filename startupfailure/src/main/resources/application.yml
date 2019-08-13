@@ -1,7 +1,7 @@
 
 spring:
   application:
-      name: activemq-producer
+      name: startupfailure
 #  activemq:
 #    broker-url: tcp://mq.server1.com:61616
     #user: admin
@@ -10,26 +10,11 @@ spring:
 
 
 server:
-  port: 10000
+  port: 10001
   servlet:
     context-path: /
   address: 192.168.6.170
 #    context-path: /producer
-
-abc: 1
-
-my:
-  name: 170
-  port: 12000
-  username: root
-  servers:
-    - localhost
-    - www.kq.com
-  map:
-      "[/key1]": value1
-      "[/key2]": value2
-      /key3: value3
-      name: king
 
 
 logging:

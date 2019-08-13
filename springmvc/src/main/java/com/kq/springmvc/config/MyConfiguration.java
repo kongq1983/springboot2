@@ -4,6 +4,9 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+import java.util.Map;
+
 /**
  * MyConfiguration
  * 从application.yml 读取my属性
@@ -18,5 +21,9 @@ public class MyConfiguration {
     private String name;
     private String username;
     private Integer port;
+
+    private List<String> servers;
+
+    private Map<String,String> map;
 
 }
