@@ -12,6 +12,7 @@
         <module>activemq</module>
         <module>rabbitmq</module>
         <module>springmvc</module>
+        <module>mybatis</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -21,6 +22,8 @@
         <version>2.1.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -55,6 +58,14 @@
                 <artifactId>commons-io</artifactId>
                 <version>${common.io.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
 
         </dependencies>
 
@@ -94,7 +105,8 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
+            <!--<optional>true</optional>-->
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>

@@ -24,7 +24,7 @@ public class IndexController {
 
         log.info("The test info is :{}", System.currentTimeMillis());
         Map<String,String> map = new HashMap<>();
-        map.put("name","king");
+        map.put("name","king5");
 
         return map;
 
