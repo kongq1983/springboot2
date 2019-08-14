@@ -4,6 +4,8 @@ import com.kq.dto.Employee;
 import com.kq.springmvc.BaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.client.RestTemplate;
 
 /**
  * EmployeeRestfulClientTest
@@ -16,6 +18,11 @@ public class EmployeeRestfulClientTest extends BaseTest{
     @Autowired
     private EmployeeRestfulClient employeeRestfulClient;
 
+    @Autowired
+    private RestTemplate restTemplate;
+
+
+
     @Test
     public void testScheduled() {
 
@@ -27,6 +34,16 @@ public class EmployeeRestfulClientTest extends BaseTest{
 
         employeeRestfulClient.employeeAdd(e);
 
+    }
+
+    @Test
+    public void testEmployeeUpdate(){
+        Employee e = new Employee();
+        e.setId(10l);
+        e.setAge(28);
+        e.setName("king");
+        e.setNumber("000001");
+        employeeRestfulClient.employeeUpdate(e);
     }
 
 
