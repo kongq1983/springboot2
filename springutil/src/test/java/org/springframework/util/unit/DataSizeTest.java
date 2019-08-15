@@ -21,13 +21,18 @@ public class DataSizeTest {
 
         assertEquals(size.toBytes(),1024*1024);
 
-        size = DataSize.ofKilobytes(1024*1024*2);
+        size = DataSize.ofKilobytes(1024*1024*2); //2G
 
         assertEquals(2,size.toGigabytes()); //
 
-        size = DataSize.ofMegabytes(2);
+        size = DataSize.ofMegabytes(2); //2M
 
         assertEquals(2*1024,size.toKilobytes()); //
+
+
+        size = DataSize.ofKilobytes(8); //8K
+
+        assertEquals(8*1024,size.toBytes());
 
 
     }
