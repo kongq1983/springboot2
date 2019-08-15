@@ -35,6 +35,20 @@ public class IndexController {
 
     }
 
+
+    @RequestMapping("/employee/add")
+    public DtoResult employeeAdd(@RequestBody  Employee e){
+
+        log.info("添加员工接收参数 :{}", e);
+
+        DtoResult result = new DtoResult();
+        result.setCode("18800000");
+        result.setResult(true);
+
+        return result;
+
+    }
+
     @RequestMapping("/employee/add1")
     public DtoResult employeeAdd1(){
 

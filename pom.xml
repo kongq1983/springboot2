@@ -14,6 +14,7 @@
         <module>springmvc</module>
         <module>startupfailure</module>
         <module>springutil</module>
+        <module>mybatis</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -57,6 +58,14 @@
                 <artifactId>commons-io</artifactId>
                 <version>${common.io.version}</version>
             </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.mybatis.spring.boot/mybatis-spring-boot-starter -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
 
         </dependencies>
 
