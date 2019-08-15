@@ -13,3 +13,6 @@ org.springframework.util.unit.DataSize
 
 # 开始结束时间计算
 org.springframework.util.StopWatch
+
+# value是数组
+org.springframework.util.LinkedMultiValueMap
