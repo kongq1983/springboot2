@@ -25,9 +25,9 @@ public class StopWatchTest {
         // stop 后 会把taskInfo放到 taskList
         stopWatch.stop();
 
-        System.out.println("allTime:"+stopWatch.getTotalTimeSeconds());
-        System.out.println("taskTime"+stopWatch.getTaskInfo()[0].getTimeSeconds());
 
+        assertEquals(3,(int)stopWatch.getTotalTimeSeconds());
+        assertEquals(3,(int)stopWatch.getTaskInfo()[0].getTimeSeconds());
         assertEquals(1,stopWatch.getTaskInfo().length);
 
         stopWatch.start();
@@ -37,9 +37,9 @@ public class StopWatchTest {
         stopWatch.stop();
 
         //总时间  从第1次start开始算起
-        System.out.println("allTime:"+stopWatch.getTotalTimeSeconds());
+        assertEquals(6,(int)stopWatch.getTotalTimeSeconds());
         //每个任务开始 算起
-        System.out.println("taskTime"+stopWatch.getTaskInfo()[1].getTimeSeconds());
+        assertEquals(3,(int)stopWatch.getTaskInfo()[0].getTimeSeconds());
 
         assertEquals(2,stopWatch.getTaskInfo().length);
 
