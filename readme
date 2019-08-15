@@ -16,3 +16,9 @@ org.springframework.util.StopWatch
 
 # value是数组
 org.springframework.util.LinkedMultiValueMap
+
+# 不区分大小写Key
+org.springframework.util.LinkedCaseInsensitiveMap
+
+#uuid
+org.springframework.util.JdkIdGenerator
