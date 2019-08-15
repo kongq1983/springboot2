@@ -13,6 +13,7 @@
         <module>rabbitmq</module>
         <module>springmvc</module>
         <module>startupfailure</module>
+        <module>springutil</module>
     </modules>
     <packaging>pom</packaging>
 
