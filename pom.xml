@@ -15,6 +15,7 @@
         <module>startupfailure</module>
         <module>springutil</module>
         <module>mybatis</module>
+        <module>spring5</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -102,18 +103,18 @@
         </dependency>
 
         <!-- 热加载 -->
-        <dependency>
+        <!--<dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
-        </dependency>
+        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <dependency>
+        <!--<dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>28.0-jre</version>
-        </dependency>
+        </dependency>-->
 
 
     </dependencies>
