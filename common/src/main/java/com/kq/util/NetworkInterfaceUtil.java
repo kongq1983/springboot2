@@ -47,6 +47,7 @@ public class NetworkInterfaceUtil {
 
     /**
      * 获取IP地址
+     *
      * @return
      * @throws Exception
      */
@@ -72,6 +73,21 @@ public class NetworkInterfaceUtil {
         return ipList;
     }
 
+    /**
+     * 获取本机ip
+     * @return
+     * @throws Exception
+     */
+    public static String getLocalIp() throws Exception {
+        InetAddress ia = InetAddress.getLocalHost();
+        String localName = ia.getHostName();
+        String localIp = ia.getHostAddress();
+        System.out.println("本机名称是：" + localName);
+        System.out.println("本机的ip是 ：" + localIp);
+        return localIp;
+
+    }
+
     public static void main(String[] args) throws Exception {
         System.out.println("进行 multi net address 测试===》");
         List<String> macs = getMacList();
@@ -79,6 +95,9 @@ public class NetworkInterfaceUtil {
 
         List<String> ipList = getIPList();
         System.out.println("本机的ip地址有：" + ipList);
+
+        String localIp = getLocalIp();
+        System.out.println("本机ip：" + localIp);
     }
 
 }
