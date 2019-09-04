@@ -1,12 +1,16 @@
 package com.kq.dto;
 
+import java.io.Serializable;
+
 /**
  * Email
  *
  * @author kq
  * @date 2019-08-06
  */
-public class Email {
+public class Email implements Serializable{
+
+
 
     private String to;
     private String body;

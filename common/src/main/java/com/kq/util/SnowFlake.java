@@ -105,14 +105,15 @@ public class SnowFlake {
         return System.currentTimeMillis();
     }
 
-    public static void main1(String[] args) {
+    public static void main(String[] args) {
 
         System.out.println(System.currentTimeMillis());
 
         SnowFlake snowFlake = new SnowFlake(1, 1);
 
         long start = System.currentTimeMillis();
-        for (int i = 0; i < 1000000; i++) {
+        int size = 10;
+        for (int i = 0; i < size; i++) {
             System.out.println(snowFlake.nextId());
         }
 
@@ -121,7 +122,7 @@ public class SnowFlake {
 
     }
 
-    public static void main(String[] args) {
+    public static void main2(String[] args) {
         System.out.println(System.currentTimeMillis());
         System.out.println("MAX_DATACENTER_NUM="+MAX_DATACENTER_NUM);
         System.out.println("MAX_MACHINE_NUM="+MAX_MACHINE_NUM);
