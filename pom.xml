@@ -16,6 +16,7 @@
         <module>springutil</module>
         <module>mybatis</module>
         <module>spring5</module>
+        <module>jetcache</module>
     </modules>
     <packaging>pom</packaging>
 
