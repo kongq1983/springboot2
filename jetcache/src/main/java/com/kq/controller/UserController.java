@@ -26,7 +26,7 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(value="/user/{id}",method = RequestMethod.GET)
+    @RequestMapping(value="/{id}",method = RequestMethod.GET)
     public DtoResult add(@PathVariable("id") Long id) {
 
         log.debug("用户ID接收参数={}",id);
@@ -37,7 +37,7 @@ public class UserController {
     }
 
 
-    @RequestMapping(value="/user/update",method = RequestMethod.POST)
+    @RequestMapping(value="/update",method = RequestMethod.POST)
     public DtoResult update(@RequestBody User u) {
 
         log.debug("修改员工接收参数={}",u);
@@ -49,7 +49,7 @@ public class UserController {
         return result;
     }
 
-    @RequestMapping(value="/user/delete/{id}",method = RequestMethod.GET)
+    @RequestMapping(value="/delete/{id}",method = RequestMethod.GET)
     public DtoResult delete(@PathVariable("id") Long id) {
 
         log.debug("删除ID接收参数={}",id);

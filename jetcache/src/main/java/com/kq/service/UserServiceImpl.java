@@ -15,7 +15,7 @@ public class UserServiceImpl implements IUserService {
         User u = new User();
         u.setId(userId);
         u.setName("add:"+userId);
-        log.info("load user from database . user={}",u);
+        log.info("==============从数据库读取 . user={}",u);
         return u;
     }
 
