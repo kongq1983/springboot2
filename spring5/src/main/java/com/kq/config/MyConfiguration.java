@@ -10,7 +10,7 @@ public class MyConfiguration {
     @Bean
     public Employee getEmployee(){
         Employee e = new Employee();
-        e.setId(100l);
+        e.setId(100L);
         e.setName("hello");
         return e;
     }

@@ -1,11 +1,16 @@
 package com.kq.constants;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * DestinationConstants
  *
  * @author kq
  * @date 2019-08-06
  */
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class DestinationConstants {
 
     public static class TOPIC {
