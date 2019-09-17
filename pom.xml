@@ -17,6 +17,7 @@
         <module>mybatis</module>
         <module>spring5</module>
         <module>webflux</module>
+        <module>jetcache</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -47,7 +48,7 @@
         <mycommon.version>1.0-SNAPSHOT</mycommon.version>
         <lombok.version>1.18.8</lombok.version>
         <fastjson.version>1.2.29</fastjson.version>
-        <hibernate.validator.version>6.0.17.Final</hibernate.validator.version>
+        <fastjson.version>1.2.29</fastjson.version>
     </properties>
 
     <dependencyManagement>
