@@ -1,0 +1,26 @@
+
+spring:
+  application:
+      name: webflux
+#  profiles:
+#    active: dev
+
+
+
+server:
+  port: 10001
+  servlet:
+    context-path: /
+  address: localhost
+
+
+
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        web: DEBUG
+    com:
+      kq: DEBUG
+
