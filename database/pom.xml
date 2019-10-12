@@ -16,6 +16,7 @@
     <modules>
         <module>jdbc1</module>
         <module>jdbc2</module>
+        <module>mybatis</module>
     </modules>
 
     <dependencies>
