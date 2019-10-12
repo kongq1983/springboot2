@@ -10,7 +10,7 @@ import javax.sql.DataSource;
 
 /**
  * InsertDataConfiguration
- *
+ * see:  https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html#howto-configure-a-datasource
  * @author kq
  * @date 2019-10-11
  */

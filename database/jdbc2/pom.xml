@@ -10,12 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.kq</groupId>
-    <artifactId>jdbc1</artifactId>
+    <artifactId>jdbc2</artifactId>
 
-
-    <dependencies>
-
-
-    </dependencies>
 
 </project>

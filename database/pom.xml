@@ -15,14 +15,36 @@
     <packaging>pom</packaging>
     <modules>
         <module>jdbc1</module>
+        <module>jdbc2</module>
     </modules>
 
     <dependencies>
 
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.kq.springboot2</groupId>
+            <artifactId>common</artifactId>
+            <version>${mycommon.version}</version>
         </dependency>
 
     </dependencies>
