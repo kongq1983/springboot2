@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kq.es.mapper.InventoryMapper">
+
+  <select id="getInventoryList" resultType="com.kq.entity.Inventory">
+          select i.inventoryid id,i.chmc name,i.chbm code,i.chdl bigCategory,i.chxl smallCategory,i.jgbs orgId,i.bzq period,
+  i.zhbs tenantId,i.chzjm mnemonicCode,i.qyzt status,i.chms remark,i.chbm code,i.createtime createTime,
+  i.createuser createUser,i.lastmodifytime lastModifyTime,i.lastmodifyuser lastModifyUser,
+  (select ic.flmc from s_inventory_category ic where ic.inventorycategoryid=i.chdl) bigCategoryName,
+  (select ic.flmc from s_inventory_category ic where ic.inventorycategoryid=i.chxl) smallCategoryName,
+  (select u.zsxm from s_user u where u.userid=i.createuser) createUserName,
+  (select u.zsxm from s_user u where u.userid=i.lastmodifyuser) lastModifyUserName,
+  (select a.zhmc from s_tenant a where a.tenantid=i.zhbs) tenantName,
+  (select o.jgmc from s_organization o where o.organizationid=i.jgbs) orgName
+  from s_inventory i
+  where i.active=1
+  </select>
+
+
+</mapper>
