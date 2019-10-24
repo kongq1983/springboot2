@@ -7,6 +7,7 @@ import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 /**
  * Configuration
@@ -24,6 +25,7 @@ public class ESConfiguration {
 
 
     @Bean
+    @Scope("prototype")
     public RestHighLevelClient getRestHighLevelClient(){
 
         log.debug("my.elasticsearch.server.url:{}",elasticSearchServerProperties.getUrl());
