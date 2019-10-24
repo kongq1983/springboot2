@@ -20,13 +20,13 @@ import java.util.Map;
  */
 @Slf4j
 @Component
-public class CreateIndex extends BaseIndex{
+public class CreateDocumentIndex extends BaseIndex{
 
 
     @Autowired
     private RestHighLevelClient restHighLevelClient;
 
-    public void createIndexByJson(String index, String id,String json) throws Exception{
+    public void createIndexByJson(String index, String id,String json,boolean close) throws Exception{
 
         IndexRequest request = null;
         if(StringUtils.hasText(id)) {
@@ -41,7 +41,9 @@ public class CreateIndex extends BaseIndex{
 
         log.info("create index response data : {}",indexResponse);
 
-        restHighLevelClient.close();
+        if(close) {
+            restHighLevelClient.close();
+        }
 
     }
 

@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class UpdateIndex extends BaseIndex{
+public class UpdateDocumentIndex extends BaseIndex{
 
     public void update(IndexEnum indexEnum,String id, Object object) throws Exception{
         String json = JSON.toJSONString(object);

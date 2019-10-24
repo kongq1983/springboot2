@@ -8,7 +8,7 @@ package com.kq.es.enums;
  */
 public enum IndexEnum {
 
-    /** 菜品 */INVENTOYR("inventory");
+    /** 菜品 */INVENTOYR("inventory"),INVENTOYR_1("inventory1");
 
     private String index;
 
