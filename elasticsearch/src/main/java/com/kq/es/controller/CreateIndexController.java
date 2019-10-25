@@ -2,8 +2,9 @@ package com.kq.es.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.kq.entity.Inventory;
+import com.kq.es.document.ExistsDocument;
 import com.kq.es.enums.IndexEnum;
-import com.kq.es.index.DeleteDocumentIndex;
+import com.kq.es.document.DeleteDocument;
 import com.kq.es.util.DomParseXmlUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,10 +27,13 @@ import java.util.List;
 public class CreateIndexController {
 
     @Autowired
-    private com.kq.es.index.CreateDocumentIndex createIndex;
+    private com.kq.es.document.CreateDocument createIndex;
 
     @Autowired
-    private DeleteDocumentIndex deleteDocumentIndex;
+    private DeleteDocument deleteDocumentIndex;
+
+    @Autowired
+    private ExistsDocument existsDocument;
 
 
     @RequestMapping("/create/{index}")
@@ -74,6 +78,22 @@ public class CreateIndexController {
         }
 
         return "ok";
+
+    }
+
+
+    @RequestMapping("/exists/{id}")
+    public Boolean existsDocumentIndex(@PathVariable("id") String id) throws Exception{
+        StringBuilder str = new StringBuilder();
+
+        Boolean result = false;
+        try {
+            result = this.existsDocument.exists(IndexEnum.INVENTOYR_1, id);
+        }catch (Exception e) {
+            log.error("删除索引失败!",e);
+        }
+
+        return result;
 
     }
 

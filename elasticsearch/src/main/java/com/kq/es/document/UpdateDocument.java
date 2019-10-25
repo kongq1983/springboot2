@@ -1,4 +1,4 @@
-package com.kq.es.index;
+package com.kq.es.document;
 
 import com.alibaba.fastjson.JSON;
 import com.kq.es.enums.IndexEnum;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class UpdateDocumentIndex extends BaseIndex{
+public class UpdateDocument extends BaseIndex{
 
     public void update(IndexEnum indexEnum,String id, Object object) throws Exception{
         String json = JSON.toJSONString(object);

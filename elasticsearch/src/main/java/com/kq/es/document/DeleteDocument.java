@@ -1,4 +1,4 @@
-package com.kq.es.index;
+package com.kq.es.document;
 
 import com.kq.es.enums.IndexEnum;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Component;
  */
 @Slf4j
 @Component
-public class DeleteDocumentIndex extends BaseIndex{
+public class DeleteDocument extends BaseIndex{
 
     /**
      * 删除Document

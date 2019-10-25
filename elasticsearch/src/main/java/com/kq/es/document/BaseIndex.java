@@ -1,4 +1,4 @@
-package com.kq.es.index;
+package com.kq.es.document;
 
 import org.elasticsearch.client.RestHighLevelClient;
 import org.springframework.beans.factory.annotation.Autowired;

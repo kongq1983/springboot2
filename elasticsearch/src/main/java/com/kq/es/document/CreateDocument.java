@@ -1,4 +1,4 @@
-package com.kq.es.index;
+package com.kq.es.document;
 
 import lombok.extern.slf4j.Slf4j;
 import org.elasticsearch.action.index.IndexRequest;
@@ -20,7 +20,7 @@ import java.util.Map;
  */
 @Slf4j
 @Component
-public class CreateDocumentIndex extends BaseIndex{
+public class CreateDocument extends BaseIndex{
 
 
     @Autowired
