@@ -6,21 +6,28 @@ import com.alicp.jetcache.anno.CacheUpdate;
 import com.alicp.jetcache.anno.Cached;
 import com.kq.dto.User;
 
-public interface IUserService {
+public interface IEmployeeService {
 
-//    public static final String CACHE_NAME = "IUserService.getUserById";
-    public static final String CACHE_NAME = "user:";
+    public static final String CACHE_NAME = "employee:";
 
     /**
-     * key:  user:2
-     * 不指定key,默认key: user:[2]
+     * 默认key: employee:[2]
      * @param userId
      * @return
      */
-//    @Cached(name=CACHE_NAME, expire = 3600,cacheType = CacheType.LOCAL)
-//    @Cached(name=CACHE_NAME, key = "#userId", expire = 3600,cacheType = CacheType.LOCAL)
-    @Cached(name=CACHE_NAME, key = "#userId", expire = 3600,cacheType = CacheType.BOTH)
+    @Cached(name=CACHE_NAME, expire = 3600,cacheType = CacheType.BOTH)
     User getUserById(Long userId);
+
+
+    /**
+     * 默认key:    employee:[2,\"king\",1]
+     * @param userId
+     * @param name
+     * @param type
+     * @return
+     */
+    @Cached(name=CACHE_NAME, expire = 3600,cacheType = CacheType.BOTH)
+    User getUserBySearch(Long userId,String name,int type);
 
     @CacheUpdate(name = CACHE_NAME, key = "#u.id", value = "result", condition = "#u.id!=null")
     public void update(User u);

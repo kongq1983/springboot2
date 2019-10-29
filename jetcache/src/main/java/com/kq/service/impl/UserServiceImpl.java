@@ -1,6 +1,7 @@
-package com.kq.service;
+package com.kq.service.impl;
 
 import com.kq.dto.User;
+import com.kq.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 

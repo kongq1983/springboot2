@@ -53,9 +53,9 @@ public class SendMailScheduled {
         int num = ato.getAndIncrement();
         logger.info("index={} , start run send mail. ",num);
 
-        jmsTopicTemplate.convertAndSend(DestinationConstants.TOPIC.MAIL_TOPIC_NAME, new Email("info-1@example.com", "Hello"+num));
-        queueJsonJmsTemplate.convertAndSend(DestinationConstants.QUEUE.JSON_QUEUE_NAME, new Email("info-json-@example.com", "Hello"+num));
-        jmsStringTopicTemplate.convertAndSend(DestinationConstants.TOPIC.STRING_TOPIC_NAME, "welcome to you ! index="+num);
+        jmsTopicTemplate.convertAndSend(DestinationConstants.TOPIC.MAIL_TOPIC_NAME, new Email("king"+num+"@topic.com", "topic Hello"+num));
+        queueJsonJmsTemplate.convertAndSend(DestinationConstants.QUEUE.JSON_QUEUE_NAME, new Email("king"+num+"@queue.com", "queue Hello"+num));
+        jmsStringTopicTemplate.convertAndSend(DestinationConstants.TOPIC.STRING_TOPIC_NAME, "welcome to you ! topic index="+num);
 
         queueJmsTemplate.convertAndSend(STRING_QUEUE_NAME,"welcome to you ! queue = "+num);
     }

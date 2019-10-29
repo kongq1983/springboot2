@@ -25,7 +25,10 @@ public class SendMailScheduledTest {
 
     @Test
     public void testScheduled() {
-        sendMailScheduled.send();
+        for(int i=0;i<3;i++) {
+            sendMailScheduled.send();
+        }
+
     }
 
 }

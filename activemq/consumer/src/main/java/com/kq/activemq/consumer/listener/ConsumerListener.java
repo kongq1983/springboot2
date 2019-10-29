@@ -20,25 +20,25 @@ public class ConsumerListener {
 
     @JmsListener(destination = DestinationConstants.TOPIC.MAIL_TOPIC_NAME)
     public void receiveEmail(Email email) {
-        logger.info("received email : {} ",email);
+        logger.info("received com.mailbox.topic : {} ",email);
     }
 
 
     @JmsListener(destination = DestinationConstants.TOPIC.STRING_TOPIC_NAME)
     public void receiveString(String email) {
-        logger.info("received string : {} ",email);
+        logger.info("received com.string.topic : {} ",email);
     }
 
 
     @JmsListener(destination = DestinationConstants.QUEUE.STRING_QUEUE_NAME,containerFactory = "myJmsContainerFactory")
     public void receiveQueueString(String msg) {
-        logger.info("received queue string : {} ",msg);
+        logger.info("received com.string.queue : {} ",msg);
     }
 
 
     @JmsListener(destination = DestinationConstants.QUEUE.JSON_QUEUE_NAME)
     public void receiveQueueEmail(Email email) {
-        logger.info("receiveQueueEmail : {} ",email);
+        logger.info("received com.json.queue : {} ",email);
     }
 
 
