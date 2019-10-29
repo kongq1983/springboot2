@@ -14,9 +14,11 @@
         <module>springmvc</module>
         <module>startupfailure</module>
         <module>springutil</module>
-        <module>mybatis</module>
         <module>spring5</module>
+        <module>webflux</module>
         <module>jetcache</module>
+        <module>database</module>
+        <module>elasticsearch</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -47,7 +49,8 @@
         <mycommon.version>1.0-SNAPSHOT</mycommon.version>
         <lombok.version>1.18.8</lombok.version>
         <fastjson.version>1.2.29</fastjson.version>
-        <fastjson.version>1.2.29</fastjson.version>
+        <mysql.version>6.0.6</mysql.version>
+        <elasticsearch.version>6.5.2</elasticsearch.version>
     </properties>
 
     <dependencyManagement>
@@ -66,6 +69,18 @@
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>2.1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>1.1.8</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>1.2.29</version>
             </dependency>
 
 

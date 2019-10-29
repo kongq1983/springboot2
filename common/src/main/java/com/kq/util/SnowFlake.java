@@ -105,7 +105,7 @@ public class SnowFlake {
         return System.currentTimeMillis();
     }
 
-    public static void main(String[] args) {
+    public static void main1(String[] args) {
 
         System.out.println(System.currentTimeMillis());
 
@@ -122,7 +122,7 @@ public class SnowFlake {
 
     }
 
-    public static void main2(String[] args) {
+    public static void main(String[] args) {
         System.out.println(System.currentTimeMillis());
         System.out.println("MAX_DATACENTER_NUM="+MAX_DATACENTER_NUM);
         System.out.println("MAX_MACHINE_NUM="+MAX_MACHINE_NUM);
@@ -130,6 +130,7 @@ public class SnowFlake {
         System.out.println("16向右移动1位="+(16>>1));
         System.out.println("1的向左移动12位="+(1 << 12));
         System.out.println("异或="+(-1^(-1 << 12)));
+        System.out.println("1的向左移动10位="+(1 << 10));
 
 
     }

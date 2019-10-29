@@ -32,4 +32,21 @@ public class LongTest {
 
     }
 
+    @Test
+    public void testAbc(){
+        byte sequenceOffset = 110;
+        sequenceOffset = (byte) (~sequenceOffset & 1);
+        System.out.println("sequenceOffset="+sequenceOffset);
+
+        // 0000 0011
+        byte num = 3;
+        // 1111 1100 (原码取反)
+        byte otherNum = (byte) (~num);
+
+        System.out.println("otherNum="+otherNum);
+
+
+    }
+
+
 }

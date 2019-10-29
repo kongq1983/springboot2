@@ -1,0 +1,48 @@
+
+spring:
+  application:
+      name: jdbc2
+#  datasource:
+#    url: jdbc:mysql://192.168.5.212:8066/TESTDB?useUnicode=true&characterEncoding=UTF-8
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: root
+#    password: 123456
+#    type: com.zaxxer.hikari.HikariDataSource
+#    hikari:
+#      connection-timeout: 20000  # 20s
+#      pool-name: hikari-pool
+#      jdbc-url: jdbc:mysql://192.168.5.212:8066/testdb?useUnicode=true&characterEncoding=UTF-8
+#      username: root
+#      password: 123456
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+my:
+  datasource:
+    ds1:
+      url: jdbc:mysql://192.168.5.212:13306/test?useUnicode=true&characterEncoding=UTF-8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+      configuration:
+        maximum-pool-size: 30
+    ds2:
+      url: jdbc:mysql://192.168.5.212:23306/test?useUnicode=true&characterEncoding=UTF-8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      username: root
+      password: 123456
+      configuration:
+        maximum-pool-size: 30
+
+
+server:
+  port: 10001
+  servlet:
+    context-path: /jdbc2
+  address: localhost
+#  address: 192.168.6.170
+#    context-path: /producer
+
+
+
+
