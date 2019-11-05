@@ -19,6 +19,7 @@
         <module>jetcache</module>
         <module>database</module>
         <module>elasticsearch</module>
+        <module>kafka</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -130,6 +131,11 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>28.0-jre</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-logging</artifactId>
         </dependency>
 
 

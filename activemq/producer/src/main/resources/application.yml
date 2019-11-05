@@ -3,7 +3,8 @@ spring:
   application:
       name: activemq-producer
   activemq:
-    broker-url: tcp://mq.server1.com:61616
+#    broker-url: tcp://mq.server1.com:61616
+    broker-url: tcp://mq.server1.com:62616
     #user: admin
     #password: secret
 

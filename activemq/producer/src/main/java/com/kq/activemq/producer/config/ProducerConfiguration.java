@@ -98,4 +98,22 @@ public class ProducerConfiguration {
     }
 
 
+    @Bean(name="jmsPersistentStringTopicTemplate")
+    public JmsTemplate jmsPersistentStringTopicTemplate(ConnectionFactory connectionFactory) {
+        PropertyMapper map = PropertyMapper.get();
+        JmsTemplate template = new JmsTemplate(connectionFactory);
+//        template.setMessageConverter(this.jacksonJmsMessageConverter());
+        // topic
+        template.setPubSubDomain(true);
+        // 设置持久化  最终是deliveryMode
+        template.setDeliveryPersistent(true);
+        template.setExplicitQosEnabled(true);
+        // template.setDestinationResolver(destinationResolver);
+
+        logger.info("jmsStringTopicTemplate messageConverter={}",template.getMessageConverter());
+
+        return template;
+    }
+
+
 }

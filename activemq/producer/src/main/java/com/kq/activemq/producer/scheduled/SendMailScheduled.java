@@ -36,6 +36,9 @@ public class SendMailScheduled {
     @Resource(name="queueJsonJmsTemplate")
     private JmsTemplate queueJsonJmsTemplate;
 
+    @Resource(name="jmsPersistentStringTopicTemplate")
+    private JmsTemplate jmsPersistentStringTopicTemplate;
+
 
     @Autowired
     @Qualifier("jmsStringTopicTemplate")
@@ -46,8 +49,8 @@ public class SendMailScheduled {
 
 
 //    @Scheduled(cron="0 */5 * * * ?")   //每5分钟执行一次
-    @Scheduled(cron="0 */1 * * * ?")   //每1分钟执行一次
-//    @Scheduled(fixedDelay=30*1000)   //每30s执行一次
+//    @Scheduled(cron="0 */1 * * * ?")   //每1分钟执行一次
+    @Scheduled(fixedDelay=30*1000)   //每30s执行一次
     public void send(){
 
         int num = ato.getAndIncrement();
@@ -56,6 +59,7 @@ public class SendMailScheduled {
         jmsTopicTemplate.convertAndSend(DestinationConstants.TOPIC.MAIL_TOPIC_NAME, new Email("king"+num+"@topic.com", "topic Hello"+num));
         queueJsonJmsTemplate.convertAndSend(DestinationConstants.QUEUE.JSON_QUEUE_NAME, new Email("king"+num+"@queue.com", "queue Hello"+num));
         jmsStringTopicTemplate.convertAndSend(DestinationConstants.TOPIC.STRING_TOPIC_NAME, "welcome to you ! topic index="+num);
+        jmsPersistentStringTopicTemplate.convertAndSend(DestinationConstants.TOPIC.STRING_PERSISTENT_TOPIC_NAME, "persistent ! welcome to you ! topic index="+num);
 
         queueJmsTemplate.convertAndSend(STRING_QUEUE_NAME,"welcome to you ! queue = "+num);
     }

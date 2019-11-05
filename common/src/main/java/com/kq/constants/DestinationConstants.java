@@ -17,6 +17,7 @@ public class DestinationConstants {
 
         public  static final String MAIL_TOPIC_NAME = "com.mailbox.topic";
         public  static final String STRING_TOPIC_NAME = "com.string.topic";
+        public  static final String STRING_PERSISTENT_TOPIC_NAME = "string.persistent.topic";
 
     }
 
