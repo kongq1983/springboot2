@@ -3,7 +3,8 @@ spring:
   application:
       name: jdbc1
   datasource:
-    url: jdbc:mysql://192.168.5.212:8066/TESTDB?useUnicode=true&characterEncoding=UTF-8
+#    url: jdbc:mysql://192.168.5.212:8066/TESTDB?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/mytest?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456

@@ -38,7 +38,8 @@
         </encoder>
     </appender>
 
-    <root level="DEBUG">
+    <!-- DEBUG INFO-->
+    <root level="INFO">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </root>

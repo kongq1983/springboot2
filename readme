@@ -25,3 +25,13 @@ org.springframework.util.JdkIdGenerator
 
 
 https://my.oschina.net/u/2485707/blog/1512624
+
+
+<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jta-atomikos</artifactId>
+        </dependency>
+
+
+事务:
+AbstractPlatformTransactionManager
