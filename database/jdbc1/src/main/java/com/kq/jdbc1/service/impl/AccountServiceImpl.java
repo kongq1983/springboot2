@@ -3,10 +3,13 @@ package com.kq.jdbc1.service.impl;
 import com.kq.jdbc1.dao.AccountDao;
 import com.kq.jdbc1.entity.Account;
 import com.kq.jdbc1.exception.ZyxtBaseRuntimeException;
+import com.kq.jdbc1.service.AccountExService;
 import com.kq.jdbc1.service.AccountService;
 import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -21,6 +24,9 @@ public class AccountServiceImpl implements AccountService {
 
     @Autowired
     private AccountDao accountDao;
+
+    @Autowired
+    private AccountExService accountExService;
 
     @Transactional
     @Override
@@ -55,9 +61,29 @@ public class AccountServiceImpl implements AccountService {
 //        accountDao.updateName(id,name);
     }
 
+    @Transactional
     @Override
     public void insert(Account account1, Account account2) {
+        this.insertAccount1(account1); //虽然加了Propagation.REQUIRES_NEW，事务还是会回滚掉 本意是要提交
+
+        accountDao.insert(account2);  //本数据报错
+    }
+
+    @Transactional(propagation= Propagation.REQUIRES_NEW)
+    public void insertAccount1(Account account1) {
+
+        accountDao.insert(account1);
 
     }
+
+    @Transactional
+    @Override
+    public void insert2(Account account1, Account account2) {
+
+        accountExService.insert(account1);  //事务会提交
+        accountDao.insert(account2);  //本数据报错
+
+    }
+
 
 }

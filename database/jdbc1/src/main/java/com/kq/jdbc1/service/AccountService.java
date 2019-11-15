@@ -18,6 +18,7 @@ public interface AccountService {
     public void updateName(Long id,String name);
 
     /**
+     * 同个service
      * account1 PROPAGATION_REQUIRES_NEW
      * account2 PROPAGATION_REQUIRED
      * 插入数据
@@ -25,5 +26,16 @@ public interface AccountService {
      * @param account2
      */
     public void insert(Account account1, Account account2);
+
+
+    /**
+     * 两个不同的service
+     * account1 PROPAGATION_REQUIRES_NEW
+     * account2 PROPAGATION_REQUIRED
+     * 插入数据
+     * @param account1
+     * @param account2
+     */
+    public void insert2(Account account1, Account account2);
 
 }
