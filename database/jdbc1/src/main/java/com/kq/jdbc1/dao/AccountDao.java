@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,5 +42,18 @@ public class AccountDao extends BaseDao{
 
         return list;
     }
+
+    public void updateName(Long id,String name) {
+        String sql = "update account set name=? where id=?";
+        jdbcTemplate.update(sql,name,id);
+    }
+
+    public void insert(Account account) {
+        String sql = "insert into account(id,username,phone,createtime) values(?,?,?,?)";
+
+        jdbcTemplate.update(sql,account.getId(),account.getUsername(),account.getPhone(),new Date());
+
+    }
+
 
 }

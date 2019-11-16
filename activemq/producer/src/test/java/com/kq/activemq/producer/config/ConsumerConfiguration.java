@@ -21,7 +21,7 @@ import javax.jms.Session;
  * @date 2019-08-06
  */
 
-@Configuration
+//@Configuration
 public class ConsumerConfiguration {
 
     protected Logger logger = LoggerFactory.getLogger(ConsumerConfiguration.class);

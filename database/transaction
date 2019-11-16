@@ -1,0 +1,11 @@
+
+CglibAopProxy
+
+TransactionInterceptor
+
+
+AbstractPlatformTransactionManager
+
+DataSourceTransactionManager
+
+DataSourceTransactionManager$DataSourceTransactionObject
