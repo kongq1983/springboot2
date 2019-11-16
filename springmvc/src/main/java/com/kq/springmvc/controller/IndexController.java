@@ -31,6 +31,13 @@ public class IndexController {
         map.put("name","king1");
         map.put("port",port);
 
+        try{
+            Thread.sleep(1000l);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         return map;
 
     }

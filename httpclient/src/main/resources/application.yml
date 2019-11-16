@@ -1,0 +1,15 @@
+
+
+server:
+  port: 10002
+  servlet:
+    context-path: /httpclient
+  address: localhost
+
+spring:
+  application:
+    name: httpclient
+
+
+
+

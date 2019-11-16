@@ -19,6 +19,7 @@
         <module>jetcache</module>
         <module>database</module>
         <module>elasticsearch</module>
+        <module>httpclient</module>
     </modules>
     <packaging>pom</packaging>
 
