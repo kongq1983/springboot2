@@ -71,7 +71,7 @@ public class HttpUtils {
 
 
     public static void main(String[] args) throws Exception{
-        String url = "http://localhost:10002/helloworld";
+        String url = "http://localhost:10001/helloworld";
 //        String result = doPost(url,null);
 //        System.out.println("result="+result);
 

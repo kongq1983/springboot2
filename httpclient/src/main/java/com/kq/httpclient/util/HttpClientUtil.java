@@ -51,7 +51,7 @@ public class HttpClientUtil {
 
     public static final int size = 2000;
 
-    private static CloseableHttpClient httpClient = null;
+    private static volatile CloseableHttpClient httpClient = null;
 
     private final static Object syncLock = new Object();
 
