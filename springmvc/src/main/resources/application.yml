@@ -35,6 +35,16 @@ my:
       name: king
 
 
+saleperiod:
+  relation:
+    huayun: # 左边:华云营业时段  右边:餐厅营业时段
+      1: 5
+      2: 6
+      3: 7
+      4: 8
+
+
+
 logging:
   level:
     root: INFO

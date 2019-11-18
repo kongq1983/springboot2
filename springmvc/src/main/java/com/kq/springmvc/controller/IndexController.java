@@ -23,6 +23,12 @@ public class IndexController {
     @Value("${server.port}")
     public String port;
 
+    @Value("${saleperiod.relation.huayun.1}")
+    public String saleTypeOne;
+
+    @Value("${saleperiod.relation.huayun.2}")
+    public String saleTypeTwo;
+
     @RequestMapping("/helloworld")
     public Map<String,String> index() {
 
@@ -30,6 +36,8 @@ public class IndexController {
         Map<String,String> map = new HashMap<>();
         map.put("name","king1");
         map.put("port",port);
+        map.put("saleTypeOne",saleTypeOne);
+        map.put("saleTypeTwo",saleTypeTwo);
 
         try{
             Thread.sleep(1000l);
