@@ -40,6 +40,7 @@ import org.apache.http.protocol.HttpContext;
 import org.apache.http.util.EntityUtils;
 
 /**
+ * 连接复用
  * HttpClient工具类
  * @return
  * @author kq
@@ -76,10 +77,6 @@ public class HttpClientUtil {
 
     /**
      * 获取HttpClient对象
-     *
-     * @return
-     * @author SHANHY
-     * @create 2015年12月18日
      */
     public static CloseableHttpClient getHttpClient(String url) {
         String hostname = url.split("/")[2];
@@ -101,10 +98,6 @@ public class HttpClientUtil {
 
     /**
      * 创建HttpClient对象
-     *
-     * @return
-     * @author SHANHY
-     * @create 2015年12月18日
      */
     public static CloseableHttpClient createHttpClient(int maxTotal,
                                                        int maxPerRoute, int maxRoute, String hostname, int port) {
@@ -185,13 +178,7 @@ public class HttpClientUtil {
     }
 
     /**
-     * GET请求URL获取内容
-     *
-     * @param url
-     * @return
-     * @author SHANHY
-     * @throws IOException
-     * @create 2015年12月18日
+     * POST请求URL获取内容
      */
     public static String post(String url, Map<String, Object> params) throws IOException {
         HttpPost httppost = new HttpPost(url);
@@ -220,11 +207,6 @@ public class HttpClientUtil {
 
     /**
      * GET请求URL获取内容
-     *
-     * @param url
-     * @return
-     * @author SHANHY
-     * @create 2015年12月18日
      */
     public static String get(String url) {
         HttpGet httpget = new HttpGet(url);

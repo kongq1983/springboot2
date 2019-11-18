@@ -23,7 +23,7 @@ import static com.kq.constants.DestinationConstants.QUEUE.*;
  */
 
 @Component
-public class SendMailScheduled {Thread.
+public class SendMailScheduled {
 
     protected Logger logger = LoggerFactory.getLogger(SendMailScheduled.class);
 
