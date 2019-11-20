@@ -21,6 +21,7 @@
         <module>elasticsearch</module>
         <module>httpclient</module>
         <module>kafka</module>
+        <module>test</module>
     </modules>
     <packaging>pom</packaging>
 
