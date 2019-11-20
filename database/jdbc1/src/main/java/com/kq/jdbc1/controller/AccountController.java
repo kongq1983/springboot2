@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * AccountController
@@ -46,6 +48,21 @@ public class AccountController {
         List<Account> list =  accountDao.getAccountList();
         log.debug("-----------------end accountDao account list : {}",list);
         return list;
+
+    }
+
+    @RequestMapping("/daoListResult")
+    public Map<String,Object> daoListResult(){
+        log.debug("-----------------start map accountDao : {}",accountDao);
+        List<Account> list =  accountDao.getAccountList();
+        log.debug("-----------------end map accountDao account list : {}",list);
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("code","16800000");
+        map.put("result",list);
+        map.put("success",true);
+
+        return map;
 
     }
 
