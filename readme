@@ -35,3 +35,5 @@ https://my.oschina.net/u/2485707/blog/1512624
 
 事务:
 AbstractPlatformTransactionManager
+
+jdbc有单元测试demo

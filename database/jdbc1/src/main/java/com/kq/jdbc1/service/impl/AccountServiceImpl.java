@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * AccountServiceImpl
  *
@@ -83,6 +85,18 @@ public class AccountServiceImpl implements AccountService {
         accountExService.insert(account1);  //事务会提交
         accountDao.insert(account2);  //本数据报错
 
+    }
+
+
+    public List<Account> getAccountList() {
+        List<Account> list = accountDao.getAccountList();
+        if(list!=null) {
+            for(Account account : list) {
+                account.setUsername("my:"+account.getUsername());
+            }
+        }
+
+        return list;
     }
 
 

@@ -1,10 +1,12 @@
 package com.kq.jdbc1.service;
 
 import com.kq.jdbc1.BaseTest;
+import com.kq.jdbc1.dao.AccountDao;
 import com.kq.jdbc1.entity.Account;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 
 /**
  * AccountServiceImplTest
@@ -14,6 +16,9 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 @Slf4j
 public class AccountServiceImplTest extends BaseTest {
+
+    @MockBean
+    private AccountDao accountDao;
 
     @Autowired
     private AccountService accountService;

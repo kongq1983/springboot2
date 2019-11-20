@@ -2,6 +2,8 @@ package com.kq.jdbc1.service;
 
 import com.kq.jdbc1.entity.Account;
 
+import java.util.List;
+
 /**
  * AccountService
  *
@@ -37,5 +39,12 @@ public interface AccountService {
      * @param account2
      */
     public void insert2(Account account1, Account account2);
+
+
+    /**
+     * 获取账号列表
+     * @return
+     */
+    public List<Account> getAccountList();
 
 }
