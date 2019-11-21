@@ -19,6 +19,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 //@JsonTest
 //@ContextConfiguration
 //@SpringBootConfiguration
+
+/**
+ * https://github.com/json-path/JsonPath
+ */
 public class MyJsonTests {
 
 //    @Autowired

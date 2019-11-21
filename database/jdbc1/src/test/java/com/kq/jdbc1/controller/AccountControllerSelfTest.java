@@ -3,11 +3,16 @@ package com.kq.jdbc1.controller;
 import com.kq.jdbc1.BaseTest;
 import com.kq.jdbc1.dao.AccountDao;
 import com.kq.jdbc1.mockdata.AccountData;
+import org.hamcrest.CoreMatchers;
 import org.junit.Test;
+import org.mockito.Mockito;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -59,6 +64,7 @@ public class AccountControllerSelfTest extends BaseTest {
 //            "code":"16800000","success":true}
 
         perform(builder).andDo(print()).andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("@.code").value(CoreMatchers.endsWith("00000")))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.length()").value(3))
                     .andExpect(MockMvcResultMatchers.jsonPath("@.code").value("16800000"))
                 .andExpect(MockMvcResultMatchers.jsonPath("@.result.length()").value(2));
