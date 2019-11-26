@@ -15,9 +15,9 @@ public class HttpClientApplication {
 
         ConfigurableApplicationContext context = SpringApplication.run(HttpClientApplication.class, args);
 
-        ResttemplateComponent rest =  context.getBean(ResttemplateComponent.class);
-
-        rest.start();
+//        ResttemplateComponent rest =  context.getBean(ResttemplateComponent.class);
+//
+//        rest.start();
 
 
     }
