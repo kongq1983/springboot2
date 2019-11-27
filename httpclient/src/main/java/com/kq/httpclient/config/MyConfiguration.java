@@ -13,20 +13,24 @@ public class MyConfiguration {
 
     @Bean
     public RestTemplate restTemplate(ClientHttpRequestFactory factory) {
-        return new RestTemplate(factory);
+//        return new RestTemplate(factory);
+
+        ClientHttpRequestFactory requestFactory = this.simpleClientHttpRequestFactory();
+
+        return new RestTemplate(requestFactory);
     }
 
     @Bean
     public ClientHttpRequestFactory simpleClientHttpRequestFactory() {
-        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+//        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
 //        HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
-//        HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(
-//                HttpClientBuilder.create()
-//                        .disableContentCompression()
-//                        .setMaxConnPerRoute(5)
-//                        .setMaxConnTotal(2000).build());
-//        factory.setReadTimeout(5000);//单位为ms
-//        factory.setConnectTimeout(5000);//单位为ms
+        HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory(
+                HttpClientBuilder.create()
+                        .disableContentCompression()
+                        .setMaxConnPerRoute(200)
+                        .setMaxConnTotal(2000).build());
+        factory.setReadTimeout(5000);//单位为ms
+        factory.setConnectTimeout(5000);//单位为ms
         return factory;
     }
 
