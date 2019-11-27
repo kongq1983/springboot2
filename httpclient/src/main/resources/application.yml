@@ -5,10 +5,35 @@ server:
   servlet:
     context-path: /
   address: localhost
+  helloworldStart-url: http://localhost:${server.port}/helloworldStart
+  helloworldDataBase-url: http://localhost:${server.port}/helloworldDataBase
+  helloworld-url: http://localhost:${server.port}/helloworld
+  helloworld1-url: http://localhost:${server.port}/helloworld1
+  helloworld2-url: http://localhost:${server.port}/helloworld2
+  helloworld3-url: http://localhost:${server.port}/helloworld3
+  helloworld4-url: http://localhost:${server.port}/helloworld4
+  helloworld5-url: http://localhost:${server.port}/helloworld5
 
 spring:
   application:
     name: httpclient
+  datasource:
+    url: jdbc:mysql://192.168.5.212:13306/test?useUnicode=true&characterEncoding=UTF-8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      connection-timeout: 20000  # 20s
+      pool-name: hikari-pool
+#      jdbc-url: jdbc:mysql://192.168.5.212:8066/testdb?useUnicode=true&characterEncoding=UTF-8
+#      username: root
+#      password: 123456
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
 
 
 
