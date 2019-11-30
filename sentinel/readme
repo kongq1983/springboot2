@@ -1,0 +1,21 @@
+
+
+
+DefaultSlotChainBuilder 构建一系列的*Slot   比如AuthoritySlot
+@Override
+public ProcessorSlotChain build() {
+    ProcessorSlotChain chain = new DefaultProcessorSlotChain();
+    chain.addLast(new NodeSelectorSlot());
+    chain.addLast(new ClusterBuilderSlot());
+    chain.addLast(new LogSlot());
+    chain.addLast(new StatisticSlot());
+    chain.addLast(new AuthoritySlot());
+    chain.addLast(new SystemSlot());
+    chain.addLast(new FlowSlot());
+    chain.addLast(new DegradeSlot());
+
+    return chain;
+}
+
+
+ArrayMetric -> new OccupiableBucketLeapArray(sampleCount, intervalInMs)
