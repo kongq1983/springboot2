@@ -19,6 +19,7 @@ import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRule;
 import com.alibaba.csp.sentinel.slots.block.degrade.DegradeRuleManager;
 
 /**
+ * rt 平均响应时间(Reaction Time)
  * <p>
  * Degrade is used when the resources are in an unstable state, these resources
  * will be degraded within the next defined time window. There are two ways to
@@ -118,9 +119,9 @@ public class RtDegradeDemo {
         DegradeRule rule = new DegradeRule();
         rule.setResource(KEY);
         // set threshold rt, 10 ms
-        rule.setCount(10);
+        rule.setCount(10); // RT阈值或异常比率阈值计数
         rule.setGrade(RuleConstant.DEGRADE_GRADE_RT);
-        rule.setTimeWindow(10);
+        rule.setTimeWindow(10); //降级恢复时间10s
         rules.add(rule);
         DegradeRuleManager.loadRules(rules);
     }

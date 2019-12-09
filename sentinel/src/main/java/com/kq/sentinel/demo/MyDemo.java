@@ -13,6 +13,13 @@ public class MyDemo {
 
         System.out.println("num="+num);
 
+        int n = 1/1000;
+        System.out.println("n="+n);
+        n = 999/1000;
+        System.out.println("n="+n);
+        n = 1999/1000;
+        System.out.println("n="+n);
+
     }
 
 }

@@ -12,6 +12,13 @@ public class CalculateTimeIdxDemo {
 
     protected static int windowLengthInMs = 500;
 
+    /**
+     * 比如从
+     * 0-999/1000=0
+     * 1000-1999/1000=1
+     * @param timeMillis
+     * @return
+     */
     private static int calculateTimeIdx(/*@Valid*/ long timeMillis) {
         long timeId = timeMillis / windowLengthInMs; /// time每增加一个windowLength的长度，timeId就会增加1，时间窗口就会往前滑动一个
         System.out.println("timeId="+timeId);
