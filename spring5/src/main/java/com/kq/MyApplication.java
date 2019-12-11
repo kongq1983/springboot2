@@ -5,6 +5,7 @@ import com.kq.dto.Employee;
 import com.kq.entity.School;
 import com.kq.service.ICircleA;
 import com.kq.service.ICircleB;
+import com.kq.service.IFactoryBeanService;
 import com.kq.service.impl.CircleB;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -25,6 +26,9 @@ public class MyApplication {
         ICircleB circleB = context.getBean(ICircleB.class);
         System.out.println("circleB="+circleB);
         circleB.showA();
+
+        IFactoryBeanService factoryBeanService = (IFactoryBeanService)context.getBean(IFactoryBeanService.class);
+        factoryBeanService.add("factoryBean");
 
     }
 
