@@ -1,0 +1,20 @@
+
+
+spring:
+  profiles:
+    active: dev
+    # include如果同级， 则越右边优先级越高   下面为例 mongodb优先级高于mysql
+    # 也就是@Value 先从application-mongodb文件中取
+    include: mysql,mongodb
+
+test:
+  username: guest-yml
+  password: password-yml
+
+
+server:
+  port: 11001
+  myname: classpathApplicationYml
+
+
+

@@ -7,4 +7,5 @@ test:
 
 spring:
   profiles:
-    active: prod
+    active: prod,test
+    include: aaa,bbb

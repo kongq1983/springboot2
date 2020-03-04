@@ -11,3 +11,5 @@ test:
 
 server:
   port: 11001
+  myname: classpathApplicationYml
+

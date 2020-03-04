@@ -1,0 +1,10 @@
+
+
+mysql:
+  server:
+    url: mysql.com:3306
+
+read:
+  include:
+    file: mysql
+
