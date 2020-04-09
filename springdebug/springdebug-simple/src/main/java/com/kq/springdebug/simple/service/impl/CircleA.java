@@ -3,6 +3,7 @@ package com.kq.springdebug.simple.service.impl;
 
 import com.kq.springdebug.simple.service.ICircleA;
 import com.kq.springdebug.simple.service.ICircleB;
+import com.kq.springdebug.simple.service.ICircleC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,9 +21,13 @@ public class CircleA implements ICircleA {
 //    @Lazy
     private ICircleB circleB;
 
+    @Autowired
+    private ICircleC circleC;
+
     @Override
     public void show() {
         System.out.println("CircleA show()");
+        circleC.show();
     }
 
     @Override
