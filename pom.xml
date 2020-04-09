@@ -30,6 +30,7 @@
         <module>springdebug/springdebug-simple</module>
         <module>springdebug/springdebug-factorybean</module>
         <module>springsession</module>
+        <module>springtask</module>
     </modules>
     <packaging>pom</packaging>
 
