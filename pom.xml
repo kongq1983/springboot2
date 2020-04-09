@@ -24,9 +24,7 @@
         <module>test</module>
         <module>sentinel</module>
         <module>config-priority</module>
-        <module>config-priority-default</module>
         <module>config-priority/config-priority-default</module>
-        <module>config-more-profile</module>
         <module>config-priority/config-more-profile</module>
         <module>springdebug</module>
         <module>springdebug/springdebug-simple</module>
