@@ -31,6 +31,8 @@
         <module>springdebug/springdebug-factorybean</module>
         <module>springsession</module>
         <module>springtask</module>
+        <module>mybatis-batch</module>
+        <module>database/mybatis/mybatis-batch</module>
     </modules>
     <packaging>pom</packaging>
 

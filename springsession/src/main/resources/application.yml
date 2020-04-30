@@ -10,9 +10,10 @@ spring:
     #password: secret
   session:  # 配置文件不配置  要启用@EnableRedisHttpSession
     store-type: redis
-    timeout: 5
+#    timeout: 5
     redis:
-      flush-mode: on_save
+#      flush-mode: on_save
+      flush-mode: immediate
       namespace: kq:session
   redis:
     host: 172.16.5.12
