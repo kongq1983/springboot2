@@ -33,6 +33,7 @@
         <module>springtask</module>
         <module>mybatis-batch</module>
         <module>database/mybatis/mybatis-batch</module>
+        <module>applicationlistener</module>
     </modules>
     <packaging>pom</packaging>
 

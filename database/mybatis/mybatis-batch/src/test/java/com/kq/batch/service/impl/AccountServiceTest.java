@@ -13,7 +13,8 @@ public class AccountServiceTest extends ApplicationBaseTest {
 
     @Test
     public void testInsert(){
-        accountService.insertTest(10000);
+//        accountService.insertTest(10000);
+        accountService.insertTest(2);
     }
     // record
     //1 .batch 插入10000条数据，花费5055ms
