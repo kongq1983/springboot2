@@ -43,7 +43,8 @@ logging:
 
 my:
   elasticsearch:
-    server:
-      url: myserver
-      port: 9200
+    servers:
+      - { hostname: "172.16.5.1",port: 9200,scheme: "http" }
+      - { hostname: "172.16.5.3",port: 9200,scheme: "http" }
+      - { hostname: "172.16.6.204",port: 9200,scheme: "http" }
 

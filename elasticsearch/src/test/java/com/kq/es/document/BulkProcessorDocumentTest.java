@@ -25,6 +25,11 @@ public class BulkProcessorDocumentTest extends BaseApplicationTest {
     private BulkProcessorDocument bulkProcessorDocument;
 
     @Test
+    public void testInfo(){
+        System.out.println("bulkProcessorDocument="+bulkProcessorDocument);
+    }
+
+    @Test
     public void testInsert() throws Exception {
 
         List<Inventory> list = DomParseXmlUtil.start();
