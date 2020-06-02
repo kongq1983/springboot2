@@ -34,6 +34,7 @@
         <module>mybatis-batch</module>
         <module>database/mybatis/mybatis-batch</module>
         <module>applicationlistener</module>
+        <module>resttemplate</module>
     </modules>
     <packaging>pom</packaging>
 

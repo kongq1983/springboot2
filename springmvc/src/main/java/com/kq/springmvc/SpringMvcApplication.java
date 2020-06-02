@@ -22,13 +22,13 @@ public class SpringMvcApplication {
     public static void main(String[] args) {
         ConfigurableApplicationContext context = SpringApplication.run(SpringMvcApplication.class, args);
 
-        String[] beanNames = context.getBeanDefinitionNames();
-
-        for(String beanName : beanNames) {
-            logger.info("load beanName ={}",beanName);
-        }
-
-        logger.info("load beanNames size ={}",context.getBeanDefinitionCount());
+//        String[] beanNames = context.getBeanDefinitionNames();
+//
+//        for(String beanName : beanNames) {
+//            logger.info("load beanName ={}",beanName);
+//        }
+//
+//        logger.info("load beanNames size ={}",context.getBeanDefinitionCount());
 
     }
 

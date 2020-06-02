@@ -1,0 +1,23 @@
+
+spring:
+  application:
+      name: resttemplate
+#  profiles:
+#    active: dev
+#  activemq:
+#    broker-url: tcp://mq.server1.com:61616
+    #user: admin
+    #password: secret
+
+
+
+server:
+  port: 10002
+  servlet:
+    context-path: /
+#  address: localhost
+#  address: 192.168.6.170
+#    context-path: /producer
+
+
+
