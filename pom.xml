@@ -35,6 +35,8 @@
         <module>database/mybatis/mybatis-batch</module>
         <module>applicationlistener</module>
         <module>resttemplate</module>
+        <module>springboot</module>
+        <module>springboot-importresource</module>
     </modules>
     <packaging>pom</packaging>
 

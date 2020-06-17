@@ -1,0 +1,21 @@
+
+spring:
+  application:
+      name: importresource
+  profiles:
+    active: dev
+#  activemq:
+#    broker-url: tcp://mq.server1.com:61616
+    #user: admin
+    #password: secret
+
+
+
+server:
+  port: 10012
+  servlet:
+    context-path: /
+
+author: admin
+
+
