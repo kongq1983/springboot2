@@ -20,7 +20,6 @@ public class InitAndDestory implements InitializingBean, DisposableBean {
         System.out.println("InitAndDestory init");
     }
 
-
     @Override
     public void afterPropertiesSet() throws Exception {
         System.out.println("初始化 InitializingBean afterPropertiesSet call");
@@ -33,7 +32,12 @@ public class InitAndDestory implements InitializingBean, DisposableBean {
 
     @PostConstruct
     public void annoationInit(){
-        System.out.println("初始化 InitializingBean PostConstruct call");
+        System.out.println("初始化 InitializingBean PostConstruct annoationInit.call");
+    }
+
+    @PostConstruct
+    public void annoationInit1(){
+        System.out.println("初始化 InitializingBean PostConstruct annoationInit1.call");
     }
 
     @PreDestroy

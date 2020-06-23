@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
-import java.util.List;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -32,16 +32,38 @@ public class MultiValueMapTest {
 
         assertEquals("hangzhou",firstValue);
 
-        List<String> values = map.get(key);
+        List<String> citys = map.get(key);
 
-        assertEquals(values, Lists.newArrayList("hangzhou","ningbo","zhoushan"));
+        assertEquals(citys, Lists.newArrayList("hangzhou","ningbo","zhoushan"));
 
         //key 不存在 则取默认的
-        values = map.getOrDefault("shanghai",Lists.newArrayList("pudong"));
+        citys = map.getOrDefault("shanghai",Lists.newArrayList("pudong"));
+        assertEquals(citys, Lists.newArrayList("pudong"));
 
-        assertEquals(values, Lists.newArrayList("pudong"));
+        citys = map.get("jiangshu");
+        assertEquals(citys, null);
 
     }
 
+
+    @Test
+    public void testListMap() {
+
+        Map<String,List<String>> map = new LinkedHashMap();
+
+        String key = "zhejiang";
+        List<String> citys = null;
+
+        if((citys=map.get(key))==null) {
+            citys = new ArrayList<>();
+            citys.add("hangzhou");
+            map.put(key,citys);
+        }
+
+
+
+
+
+    }
 
 }

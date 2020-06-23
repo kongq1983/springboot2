@@ -16,7 +16,7 @@ public class DataSizeTest {
     @Test
     public void testSize(){
 
-        DataSize size = DataUnit.MEGABYTES.size();
+        DataSize size = DataUnit.MEGABYTES.size(); //MB
         System.out.println("size="+size);
 
         assertEquals(size.toBytes(),1024*1024);
@@ -33,6 +33,15 @@ public class DataSizeTest {
         size = DataSize.ofKilobytes(8); //8K
 
         assertEquals(8*1024,size.toBytes());
+
+        DataSize fiveM = DataSize.parse("5MB");
+        assertEquals(5*1024,fiveM.toKilobytes());
+
+        DataSize fiveKB = DataSize.parse("5KB");
+        assertEquals(5,fiveKB.toKilobytes());
+
+        DataSize fiveByte = DataSize.parse("5");
+        assertEquals(5,fiveByte.toBytes());
 
 
     }
