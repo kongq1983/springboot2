@@ -11,6 +11,20 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value="/employee")
 public class EmployeeController {
 
+
+    /**
+     * @api {post} /employee/add 添加员工
+     * @apiVersion 1.0.1
+     * @apiName employeeAdd
+     * @apiGroup 员工
+     *
+     * @apiParam {int} age=18 年龄
+     * @apiParam {String} name 姓名
+     * @apiParam  {String} number 工号
+     *
+     * @apiSuccess {String} code 返回码
+     * @apiSuccess {String} result 返回结果
+     */
     @RequestMapping(value="/add",method = RequestMethod.POST)
     public DtoResult add(@RequestBody Employee e) {
 

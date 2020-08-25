@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @Slf4j
@@ -34,6 +35,8 @@ public class IndexController {
 
     @Value("${test.password}")
     public String testPassword;
+
+    private AtomicLong atomicLong = new AtomicLong(0);
 
     @RequestMapping("/helloworld")
     public Map<String,String> index() {
@@ -81,7 +84,7 @@ public class IndexController {
         result.setResult(true);
 
         Employee e = new Employee();
-        e.setId(1l);
+        e.setId(atomicLong.incrementAndGet());
         e.setAge(18);
         e.setName("king");
         e.setNumber("000001");

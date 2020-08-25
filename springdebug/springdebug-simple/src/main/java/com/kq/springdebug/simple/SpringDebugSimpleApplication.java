@@ -1,6 +1,7 @@
 package com.kq.springdebug.simple;
 
 
+import com.kq.springdebug.simple.component.InitAndDestory;
 import com.kq.springdebug.simple.service.ICircleA;
 import com.kq.springdebug.simple.service.ICircleB;
 import org.springframework.context.ApplicationContext;
@@ -22,6 +23,17 @@ public class SpringDebugSimpleApplication {
         ICircleB circleB = context.getBean(ICircleB.class);
         System.out.println("circleB="+circleB);
         circleB.showA();
+
+        InitAndDestory initAndDestory = context.getBean(InitAndDestory.class);
+        System.out.println("initAndDestory="+initAndDestory);
+
+//        String[] beanNames = context.getBeanDefinitionNames();
+//
+//        for(String beanName : beanNames) {
+//            System.out.println("load beanName ="+beanName);
+//        }
+//
+//        System.out.println("load beanNames size = "+context.getBeanDefinitionCount());
 
 
     }

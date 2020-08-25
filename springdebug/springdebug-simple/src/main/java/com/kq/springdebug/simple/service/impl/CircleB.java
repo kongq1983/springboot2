@@ -5,6 +5,7 @@ import com.kq.springdebug.simple.service.ICircleA;
 import com.kq.springdebug.simple.service.ICircleB;
 import com.kq.springdebug.simple.service.ICircleC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 
