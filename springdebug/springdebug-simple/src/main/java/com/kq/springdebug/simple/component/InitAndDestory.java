@@ -46,4 +46,11 @@ public class InitAndDestory implements InitializingBean, DisposableBean {
         System.out.println("销毁 DisposableBean PreDestroy call");
     }
 
+
+    @Bean
+    public SmsComponent getSmsComponent(){
+        SmsComponent smsComponent = new SmsComponent();
+        return smsComponent;
+    }
+
 }
