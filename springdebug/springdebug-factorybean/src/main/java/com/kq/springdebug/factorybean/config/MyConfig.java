@@ -3,8 +3,6 @@ package com.kq.springdebug.factorybean.config;
 import com.kq.springdebug.factorybean.MyFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @Configuration
 public class MyConfig {
@@ -24,6 +22,14 @@ public class MyConfig {
     @Bean
     public WeixinComponent getWeixinComponent(SmsComponent smsComponent1){
         WeixinComponent messageComponent = new WeixinComponent();
+        messageComponent.setSmsComponent(smsComponent1);
+        return messageComponent;
+    }
+
+
+    @Bean
+    public DingDingComponent getDingDingComponent(SmsComponent smsComponent1){
+        DingDingComponent messageComponent = new DingDingComponent();
         messageComponent.setSmsComponent(smsComponent1);
         return messageComponent;
     }

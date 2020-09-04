@@ -27,14 +27,15 @@ public class SpringDebugFactoryBeanApplication {
 
         MyConfig myConfig = context.getBean(MyConfig.class);
 
-        SmsComponent smsComponent = context.getBean(SmsComponent.class);
-        System.out.println("smsComponent="+smsComponent);
+
         MessageComponent messageComponent = context.getBean(MessageComponent.class);
         System.out.println("smsComponent="+messageComponent.getSmsComponent());
         WeixinComponent weixinComponent = context.getBean(WeixinComponent.class);
         System.out.println("WeixinComponent="+weixinComponent.getSmsComponent());
         SmsComponent smsComponent1 = myConfig.getSmsComponent();
         System.out.println("myConfig.getSmsComponent="+smsComponent1);
+        SmsComponent smsComponent = context.getBean(SmsComponent.class);
+        System.out.println("smsComponent="+smsComponent);
 
 
 
