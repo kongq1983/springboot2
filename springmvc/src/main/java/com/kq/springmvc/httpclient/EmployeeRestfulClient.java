@@ -27,16 +27,19 @@ public class EmployeeRestfulClient {
     private RestTemplate restTemplate;
 
     //测试的时候 读取不到
-//    @Value("${server.port}")
-    public String port="10000";
+    @Value("${server.port}")
+    public String port;
+//    public String port="10001";
 
+    @Value("${server.remoteUrl}")
+    private String server;
 
-
-    private String ADD_URL = "http://127.0.0.1:"+port+"/employee/add";
-    private String UPDATE_URL = "http://127.0.0.1:"+port+"/employee/update/{id}?age={age}";
 
 
     public void employeeAdd(Employee e){
+        String ADD_URL = "http://"+server+":"+port+"/employee/add";
+
+        log.info("开始调用添加用户接口 ========== 路径:{}",ADD_URL);
 
         HttpHeaders headers = new HttpHeaders();
         // headers.add("XK-Autho1.0.0", "token "+token);
@@ -48,7 +51,7 @@ public class EmployeeRestfulClient {
 
         HttpEntity<String> entity = new HttpEntity<String>(json, headers);
 
-        log.info("开始调用添加用户接口 ==========");
+
 
         ResponseEntity<String> rss = restTemplate.exchange(ADD_URL, HttpMethod.POST, entity, String.class);
 
@@ -62,6 +65,8 @@ public class EmployeeRestfulClient {
      * @param e
      */
     public void employeeUpdate(Employee e){
+
+        String UPDATE_URL = "http://"+server+":"+port+"/employee/update/{id}?age={age}";
 
         // 对PathVariable  RequestParam 都起作用
         DtoResult result = restTemplate.postForObject(UPDATE_URL,e, DtoResult.class,12,20);

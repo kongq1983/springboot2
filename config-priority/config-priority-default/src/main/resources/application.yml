@@ -1,0 +1,15 @@
+
+
+spring:
+  profiles:
+    active: dev
+
+test:
+  username: guest-yml
+  password: password-yml
+
+
+server:
+  port: 11001
+  myname: classpathApplicationYml
+

@@ -1,0 +1,10 @@
+
+
+mongodb:
+  server:
+    url: mongodb.com:12707
+
+read:
+  include:
+    file: mongodb
+

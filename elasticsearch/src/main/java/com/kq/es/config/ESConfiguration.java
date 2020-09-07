@@ -1,5 +1,6 @@
 package com.kq.es.config;
 
+import com.kq.es.entity.ESServer;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHost;
 import org.elasticsearch.action.bulk.BackoffPolicy;
@@ -18,6 +19,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import java.net.InetAddress;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Configuration
@@ -41,11 +44,19 @@ public class ESConfiguration {
         log.debug("my.elasticsearch.server.url:{}",elasticSearchServerProperties.getUrl());
         log.debug("my.elasticsearch.server.port:{}",elasticSearchServerProperties.getPort());
 
+//        RestHighLevelClient client = new RestHighLevelClient(
+//                RestClient.builder(
+//                        new HttpHost(elasticSearchServerProperties.getUrl(),
+//                                elasticSearchServerProperties.getPort(),
+//                                    "http")));
+
+        List<HttpHost> list = elasticSearchServerProperties.getServers().stream().map(s->{
+            return new HttpHost(s.getHostname(),s.getPort(),s.getScheme());
+        }).collect(Collectors.toList());
+
         RestHighLevelClient client = new RestHighLevelClient(
                 RestClient.builder(
-                        new HttpHost(elasticSearchServerProperties.getUrl(),
-                                elasticSearchServerProperties.getPort(),
-                                    "http")));
+                        list.toArray(new HttpHost[0])));
 //                        new HttpHost("localhost", 9201, "http")));
 
         return client;

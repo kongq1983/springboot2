@@ -11,6 +11,12 @@
 
     <groupId>com.kq</groupId>
     <artifactId>spring-util</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+    </dependencies>
 
 
 </project>

@@ -41,7 +41,8 @@ public class BulkRequestDocumentTest extends BaseApplicationTest {
 
             IndexDto dto = new IndexDto();
             dto.setId(String.valueOf(id));
-            dto.setIndex("inventory2");
+//            dto.setIndex("inventory2");
+            dto.setIndex("inventory1");
             dto.setJson(json);
             inventoryList.add(dto);
 

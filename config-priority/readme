@@ -1,0 +1,9 @@
+
+配置文件优先级demo
+
+vm options:   -Dserver.port=11002
+program argumens:  --server.port=11003
+
+
+program argumens > vm options > 配置文件
+

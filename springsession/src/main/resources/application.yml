@@ -1,0 +1,35 @@
+
+spring:
+  application:
+      name: spring-session
+#  profiles:
+#    active: dev
+#  activemq:
+#    broker-url: tcp://mq.server1.com:61616
+    #user: admin
+    #password: secret
+  session:  # 配置文件不配置  要启用@EnableRedisHttpSession
+    store-type: redis
+#    timeout: 5
+    redis:
+#      flush-mode: on_save
+      flush-mode: immediate
+      namespace: kq:session
+  redis:
+    host: 172.16.5.12
+    port: 6379
+    database: 15
+    password: jkct-redis-123456
+
+
+
+server:
+  port: 10006
+  servlet:
+    context-path: /springsession
+#  address: localhost
+#  address: 192.168.6.170
+#    context-path: /producer
+
+
+

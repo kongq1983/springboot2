@@ -1,0 +1,10 @@
+
+spring:
+  profiles:
+    active: test
+
+test:
+  username: guest-root-yml
+  password: password-root-yml
+
+

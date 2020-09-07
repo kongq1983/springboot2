@@ -1,0 +1,298 @@
+
+public AnnotationConfigApplicationContext(Class<?>... annotatedClasses) {
+		this();
+		register(annotatedClasses);
+		refresh();
+}
+
+AnnotationConfigApplicationContext
+public AnnotationConfigApplicationContext() {
+        this.reader = new AnnotatedBeanDefinitionReader(this); //一个读取注解的Bean读取器
+        this.scanner = new ClassPathBeanDefinitionScanner(this);//从指定包内扫描所有组件bean定义的Spring工具
+}
+
+        AnnotatedBeanDefinitionReader -- >
+            AnnotationConfigUtils.registerAnnotationConfigProcessors (注册ConfigurationClassPostProcessor、AutowiredAnnotationBeanPostProcessor等Processor)
+            registry.registerBeanDefinition(beanName, definition);  //这里是registerBeanDefinition************
+            this.beanDefinitionMap.put(beanName, beanDefinition);//将BeanDefinition放到这个map中，key:bean名称 value:beanDefinition
+            this.beanDefinitionNames.add(beanName); //会按照bean配置的顺序保存每一个注册的Bean的名字
+
+
+AnnotatedBeanDefinitionReader doRegisterBean
+
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+DefaultSingletonBeanRegistry extends SimpleAliasRegistry implements SingletonBeanRegistry {
+
+	/** Cache of singleton objects: bean name to bean instance. 单例对象的缓存  一級緩存*/
+	private final Map<String, Object> singletonObjects = new ConcurrentHashMap<>(256);
+	//singletonFactories:  临时工 用于存储beanName和创建bean工厂的关系 一旦最终对象被创建，此引用信息将删除
+	/** Cache of singleton factories: bean name to ObjectFactory. 三級緩存 临时工 用于存储beanName和创建bean工厂的关系 一旦最终对象被创建，此引用信息将删除*/
+	private final Map<String, ObjectFactory<?>> singletonFactories = new HashMap<>(16);
+	//earlySingletonObjects: 临时工 存储beanName和创建bean实例之间的关系 一旦对象最终创建好，此引用信息将删除
+	/** Cache of early singleton objects: bean name to bean instance. 二級緩存 临时工 一旦对象最终创建好，此引用信息将删除 用来检测循环依赖 */
+	private final Map<String, Object> earlySingletonObjects = new HashMap<>(16);
+	//registeredSingletons: 保存当前所有已注册的bean
+	/** Set of registered singletons, containing the bean names in registration order. 保存当前所有已注册的bean*/
+	private final Set<String> registeredSingletons = new LinkedHashSet<>(256);
+    // add: beforeSingletonCreation   remove: afterSingletonCreation  check: isSingletonCurrentlyInCreation
+	/** Names of beans that are currently in creation. 存放正在创建bean的beanName*/
+	private final Set<String> singletonsCurrentlyInCreation =
+			Collections.newSetFromMap(new ConcurrentHashMap<>(16));
+
+	/** Names of beans currently excluded from in creation checks. 所有被创建检查排除的bean列表 */
+	private final Set<String> inCreationCheckExclusions =
+			Collections.newSetFromMap(new ConcurrentHashMap<>(16));
+
+	/** bean管理过程中所有的被禁用的异常列表 List of suppressed Exceptions, available for associating related causes. */
+	@Nullable
+	private Set<Exception> suppressedExceptions;
+
+	/** Flag that indicates whether we're currently within destroySingletons. */
+	private boolean singletonsCurrentlyInDestruction = false;
+
+	/** Disposable bean instances: bean name to disposable instance. */
+	private final Map<String, Object> disposableBeans = new LinkedHashMap<>();
+
+	/** Map between containing bean names: bean name to Set of bean names that the bean contains. */
+	private final Map<String, Set<String>> containedBeanMap = new ConcurrentHashMap<>(16);
+
+	/** Map between dependent bean names: bean name to Set of dependent bean names. */
+	private final Map<String, Set<String>> dependentBeanMap = new ConcurrentHashMap<>(64);
+
+	/** Map between depending bean names: bean name to Set of bean names for the bean's dependencies. */
+	private final Map<String, Set<String>> dependenciesForBeanMap = new ConcurrentHashMap<>(64);
+
+----------------------------------------------------------------------------------------------------------------------------------------
+@Override
+	public void registerSingleton(String beanName, Object singletonObject) throws IllegalStateException {
+
+		synchronized (this.singletonObjects) {
+			Object oldObject = this.singletonObjects.get(beanName);
+			if (oldObject != null) {
+				throw new IllegalStateException("Could not register object [" + singletonObject +
+						"] under bean name '" + beanName + "': there is already object [" + oldObject + "] bound");
+			}
+			addSingleton(beanName, singletonObject);
+		}
+	}
+
+protected void addSingleton(String beanName, Object singletonObject) {
+    synchronized (this.singletonObjects) {
+        this.singletonObjects.put(beanName, singletonObject);  //加入到单例缓存
+        this.singletonFactories.remove(beanName);  // 三级缓存删除
+        this.earlySingletonObjects.remove(beanName); //二级缓存删除
+        this.registeredSingletons.add(beanName); //用来记录保存已经处理的bean
+    }
+}
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+ClassPathBeanDefinitionScanner.doScan(String... basePackages)
+
+
+protected Set<BeanDefinitionHolder> doScan(String... basePackages) {
+		Assert.notEmpty(basePackages, "At least one base package must be specified");
+		Set<BeanDefinitionHolder> beanDefinitions = new LinkedHashSet<>();
+		for (String basePackage : basePackages) {
+			Set<BeanDefinition> candidates = findCandidateComponents(basePackage); //扫描basePackages 得到所有类(Service、Component等注解的类)
+			for (BeanDefinition candidate : candidates) {
+				ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(candidate);
+				candidate.setScope(scopeMetadata.getScopeName());
+				String beanName = this.beanNameGenerator.generateBeanName(candidate, this.registry);
+				if (candidate instanceof AbstractBeanDefinition) {
+					postProcessBeanDefinition((AbstractBeanDefinition) candidate, beanName);
+				}
+				if (candidate instanceof AnnotatedBeanDefinition) {
+					AnnotationConfigUtils.processCommonDefinitionAnnotations((AnnotatedBeanDefinition) candidate); // 处理注解
+				}
+				if (checkCandidate(beanName, candidate)) {
+					BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(candidate, beanName);
+					definitionHolder =
+							AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
+					beanDefinitions.add(definitionHolder);
+					registerBeanDefinition(definitionHolder, this.registry);
+				}
+			}
+		}
+		return beanDefinitions;
+	}
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+AbstractApplicationContext
+
+@Override
+	public void refresh() throws BeansException, IllegalStateException {
+		synchronized (this.startupShutdownMonitor) {
+			// 准备刷新  Prepare this context for refreshing.
+			prepareRefresh(); //下面一句 当然，这里说的 Bean 还没有初始化，只是配置信息都提取出来了
+			// 这步比较关键，这步完成后，配置文件就会解析成一个个 Bean 定义，注册到 BeanFactory
+			// 告诉子类刷新内部的bean工厂  Tell the subclass to refresh the internal bean factory.
+			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
+			// 上面一句  注册也只是将这些信息都保存到了注册中心(说到底核心是一个 beanName-> beanDefinition 的 map)
+			// Prepare the bean factory for use in this context.
+			prepareBeanFactory(beanFactory); //设置 BeanFactory的类加载器，添加几个BeanPostProcessor，手动注册几个特殊的bean
+
+			try { // 这里需要知道 BeanFactoryPostProcessor 这个知识点，Bean 如果实现了此接口 那么在容器初始化以后，Spring 会负责调用里面的 postProcessBeanFactory 方法
+				// Allows post-processing of the bean factory in context subclasses.
+				postProcessBeanFactory(beanFactory); // 这里是提供给子类的扩展点，到这里的时候，所有的 Bean 都加载、注册完成了，但是都还没有初始化
+
+				// Invoke factory processors registered as beans in the context.
+				invokeBeanFactoryPostProcessors(beanFactory); // 调用 BeanFactoryPostProcessor 各个实现类的 postProcessBeanFactory(factory) 方法
+
+				// Register bean processors that intercept bean creation. 注册 BeanPostProcessor 的实现类，注意看和 BeanFactoryPostProcessor 的区别
+				registerBeanPostProcessors(beanFactory); // 此接口两个方法: postProcessBeforeInitialization 和 postProcessAfterInitialization
+				// registerBeanPostProcessors : 两个方法分别在 Bean 初始化之前和初始化之后得到执行。注意，到这里 Bean 还没初始化
+				// Initialize message source for this context.
+				initMessageSource(); // 初始化当前 ApplicationContext 的 MessageSource
+
+				// Initialize event multicaster for this context.
+				initApplicationEventMulticaster(); // 初始化当前 ApplicationContext 的事件广播器
+
+				// Initialize other special beans in specific context subclasses.
+				onRefresh(); // 模板方法 : 具体的子类可以在这里初始化一些特殊的 Bean（在初始化 singleton beans 之前）
+
+				// Check for listener beans and register them.
+				registerListeners(); // 注册事件监听器，监听器需要实现 ApplicationListener 接口
+
+				// Instantiate all remaining (non-lazy-init) singletons.  重点，重点，重点
+				finishBeanFactoryInitialization(beanFactory); // 初始化所有的 singleton beans(lazy-init 的除外）
+
+				// Last step: publish corresponding event.
+				finishRefresh(); // 最后，广播事件，ApplicationContext 初始化完成
+			}
+
+			catch (BeansException ex) {
+				if (logger.isWarnEnabled()) {
+					logger.warn("Exception encountered during context initialization - " +
+							"cancelling refresh attempt: " + ex);
+				}
+
+				// Destroy already created singletons to avoid dangling resources.
+				destroyBeans(); //销毁已经初始化的 singleton 的 Beans，以免有些 bean 会一直占用资源
+
+				// Reset 'active' flag.
+				cancelRefresh(ex);
+
+				// Propagate exception to caller.
+				throw ex;
+			}
+
+			finally {
+				// Reset common introspection caches in Spring's core, since we
+				// might not ever need metadata for singleton beans anymore...
+				resetCommonCaches();
+			}
+		}
+	}
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+
+protected Object doCreateBean(final String beanName, final RootBeanDefinition mbd, final @Nullable Object[] args)
+			throws BeanCreationException {
+
+		// Instantiate the bean.
+		BeanWrapper instanceWrapper = null;
+		if (mbd.isSingleton()) {
+			instanceWrapper = this.factoryBeanInstanceCache.remove(beanName);
+		}
+		if (instanceWrapper == null) {
+			instanceWrapper = createBeanInstance(beanName, mbd, args); // 说明不是 FactoryBean，这里实例化 Bean，这里非常关键
+		}
+		final Object bean = instanceWrapper.getWrappedInstance();
+		Class<?> beanType = instanceWrapper.getWrappedClass();
+		if (beanType != NullBean.class) {
+			mbd.resolvedTargetType = beanType;
+		}
+
+		// Allow post-processors to modify the merged bean definition.
+		synchronized (mbd.postProcessingLock) {
+			if (!mbd.postProcessed) {
+				try {
+					applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);
+				}
+				catch (Throwable ex) {
+					throw new BeanCreationException(mbd.getResourceDescription(), beanName,
+							"Post-processing of merged bean definition failed", ex);
+				}
+				mbd.postProcessed = true;
+			}
+		}
+
+		// Eagerly cache singletons to be able to resolve circular references
+		// even when triggered by lifecycle interfaces like BeanFactoryAware.
+		boolean earlySingletonExposure = (mbd.isSingleton() && this.allowCircularReferences &&
+				isSingletonCurrentlyInCreation(beanName));
+		if (earlySingletonExposure) {
+			if (logger.isTraceEnabled()) {
+				logger.trace("Eagerly caching bean '" + beanName +
+						"' to allow for resolving potential circular references");
+			}
+			addSingletonFactory(beanName, () -> getEarlyBeanReference(beanName, mbd, bean)); //非单例的，就不会预加载
+		}
+
+		// Initialize the bean instance.
+		Object exposedObject = bean;
+		try {
+			populateBean(beanName, mbd, instanceWrapper);
+			exposedObject = initializeBean(beanName, exposedObject, mbd);
+		}
+		catch (Throwable ex) {
+			if (ex instanceof BeanCreationException && beanName.equals(((BeanCreationException) ex).getBeanName())) {
+				throw (BeanCreationException) ex;
+			}
+			else {
+				throw new BeanCreationException(
+						mbd.getResourceDescription(), beanName, "Initialization of bean failed", ex);
+			}
+		}
+
+		if (earlySingletonExposure) {
+			Object earlySingletonReference = getSingleton(beanName, false);
+			if (earlySingletonReference != null) {
+				if (exposedObject == bean) {
+					exposedObject = earlySingletonReference;
+				}
+				else if (!this.allowRawInjectionDespiteWrapping && hasDependentBean(beanName)) {
+					String[] dependentBeans = getDependentBeans(beanName);
+					Set<String> actualDependentBeans = new LinkedHashSet<>(dependentBeans.length);
+					for (String dependentBean : dependentBeans) {
+						if (!removeSingletonIfCreatedForTypeCheckOnly(dependentBean)) {
+							actualDependentBeans.add(dependentBean);
+						}
+					}
+					if (!actualDependentBeans.isEmpty()) {
+						throw new BeanCurrentlyInCreationException(beanName,
+								"Bean with name '" + beanName + "' has been injected into other beans [" +
+								StringUtils.collectionToCommaDelimitedString(actualDependentBeans) +
+								"] in its raw version as part of a circular reference, but has eventually been " +
+								"wrapped. This means that said other beans do not use the final version of the " +
+								"bean. This is often the result of over-eager type matching - consider using " +
+								"'getBeanNamesOfType' with the 'allowEagerInit' flag turned off, for example.");
+					}
+				}
+			}
+		}
+
+		// Register bean as disposable.
+		try {
+			registerDisposableBeanIfNecessary(beanName, bean, mbd);
+		}
+		catch (BeanDefinitionValidationException ex) {
+			throw new BeanCreationException(
+					mbd.getResourceDescription(), beanName, "Invalid destruction signature", ex);
+		}
+
+		return exposedObject;
+	}

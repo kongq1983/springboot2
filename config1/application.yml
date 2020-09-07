@@ -1,0 +1,11 @@
+
+
+test:
+  username: p-guest-config-yml
+  password: p-password-config-yml
+
+
+spring:
+  profiles:
+    active: prod,test
+    include: aaa,bbb
