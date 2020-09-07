@@ -21,7 +21,7 @@ import java.util.concurrent.CountDownLatch;
  */
 public class HttpUtils {
 
-    public static final int size = 2000;
+    public static final int size = 2;
 
     private static CountDownLatch countDownLatch = new CountDownLatch(size);
 
@@ -71,7 +71,7 @@ public class HttpUtils {
 
 
     public static void main(String[] args) throws Exception{
-        String url = "http://localhost:10001/helloworld";
+        String url = "http://localhost:10002/helloworld";
 //        String result = doPost(url,null);
 //        System.out.println("result="+result);
 
