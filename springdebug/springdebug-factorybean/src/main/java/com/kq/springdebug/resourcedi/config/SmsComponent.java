@@ -1,4 +1,4 @@
-package com.kq.springdebug.factorybean.config;
+package com.kq.springdebug.resourcedi.config;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;

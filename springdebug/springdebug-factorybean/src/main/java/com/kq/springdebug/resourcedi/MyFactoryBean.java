@@ -1,4 +1,4 @@
-package com.kq.springdebug.factorybean;
+package com.kq.springdebug.resourcedi;
 
 import com.kq.entity.Account;
 import org.springframework.beans.factory.FactoryBean;

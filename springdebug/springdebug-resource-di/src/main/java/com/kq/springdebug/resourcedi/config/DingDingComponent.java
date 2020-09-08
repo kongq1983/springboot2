@@ -1,12 +1,18 @@
-package com.kq.springdebug.factorybean.config;
+package com.kq.springdebug.resourcedi.config;
+
+import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
 
 /**
  * @author kq
  * @date 2020-09-02 17:41
  * @since 2020-0630
  */
-public class WeixinComponent {
+@Component
+public class DingDingComponent {
 
+    @Resource()
     private SmsComponent smsComponent;
 
     public SmsComponent getSmsComponent() {
@@ -19,7 +25,7 @@ public class WeixinComponent {
 
     @Override
     public String toString() {
-        return "MessageComponent{" +
+        return "DingDingComponent{" +
                 "smsComponent=" + smsComponent +
                 '}';
     }

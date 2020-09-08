@@ -1,11 +1,11 @@
-package com.kq.springdebug.factorybean.config;
+package com.kq.springdebug.resourcedi.config;
 
 /**
  * @author kq
  * @date 2020-09-02 17:41
  * @since 2020-0630
  */
-public class MessageComponent {
+public class WeixinComponent {
 
     private SmsComponent smsComponent;
 
