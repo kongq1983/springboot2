@@ -17,11 +17,11 @@ public class SpringDebugResourceDIApplication {
     public static void main(String[] args) {
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringDebugResourceDIApplication.class);
 
-        MyConfig myConfig = context.getBean(MyConfig.class);
+//        MyConfig myConfig = context.getBean(MyConfig.class);
 
 
-        MessageComponent messageComponent = context.getBean(MessageComponent.class);
-        System.out.println("smsComponent="+messageComponent.getSmsComponent1());
+//        MessageComponent messageComponent = context.getBean(MessageComponent.class);
+//        System.out.println("smsComponent="+messageComponent.getSmsComponent1());
 
         SmsComponent smsComponent = context.getBean(SmsComponent.class);
         System.out.println("smsComponent="+smsComponent);

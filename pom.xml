@@ -37,6 +37,11 @@
         <module>resttemplate</module>
         <module>springboot</module>
         <module>springboot-importresource</module>
+        <module>springdebug-resource-di</module>
+        <module>logback</module>
+        <module>springboot-logback</module>
+        <module>logback/springboot-logback</module>
+        <module>logback/springboot-log-group</module>
     </modules>
     <packaging>pom</packaging>
 

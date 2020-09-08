@@ -1,0 +1,7 @@
+
+
+logging:
+  file:
+    name: springboot-logback-test-log
+
+
