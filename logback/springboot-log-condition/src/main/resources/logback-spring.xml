@@ -6,11 +6,12 @@
     <include resource="org/springframework/boot/logging/logback/defaults.xml" />
     <springProperty scope="context" name="LOG_FILE_NAME" source="logging.file.name"/>
     <springProperty scope="context" name="LOG_FILE_DIR" source="logging.file.path"/>
+    <springProperty scope="context" name="logging.mydir" source="logging.mydir"/>
 
 
-    <if condition="isDefined(mydir)">
+    <if condition='isDefined("logging.mydir")'>
         <then>
-            <property scope="context" name="LOG_FILE_DIR" value="c:/logs/mydir"/>
+            <property scope="context" name="LOG_FILE_DIR" value="${logging.mydir}"/>
         </then>
         <else>
             <property scope="context" name="LOG_FILE_DIR" value="c:/logs/otherdir"/>
