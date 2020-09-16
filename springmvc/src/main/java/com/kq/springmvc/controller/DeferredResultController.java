@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.async.DeferredResult;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 /**
- * http://localhost:10001/async/deferred/11
+ * http://localhost:10001/async/deferred/async/11
  * @author kq
  * @date 2020-09-15 18:55
  * @since 2020-0630
@@ -21,7 +22,12 @@ import java.util.concurrent.TimeUnit;
 @RequestMapping("/async/deferred")
 public class DeferredResultController {
 
-    @RequestMapping("/{id}")
+    /**
+     * http://localhost:10001/async/deferred/async/11
+     * @param id
+     * @return
+     */
+    @RequestMapping("/sync/{id}")
     public DeferredResult<ResponseEntity<String>> testProcess(@PathVariable("id") String id) {
 
         final DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<ResponseEntity<String>>(5000L);
@@ -71,6 +77,42 @@ public class DeferredResultController {
             //业务逻辑END
             result.setResult("ok");
         }
+    }
+
+    /**
+     * http://localhost:10001/async/deferred/runAsync/11
+     * @param id
+     * @return
+     */
+    @RequestMapping("/runAsync/{id}")
+    public DeferredResult<String> testProcess1(@PathVariable("id") String id) {
+
+        final DeferredResult<String> deferredResult = new DeferredResult<>(5000L);
+
+        deferredResult.onTimeout(()->{
+            //超时后调用
+            log.info("------------------time out");
+            deferredResult.setErrorResult("timeout");
+        });
+
+        deferredResult.onCompletion(()->{
+            // 本方法在setResult输出结果后，调用
+            log.info("execute success.");
+//            ResponseEntity<String> result = new ResponseEntity<String>("success", HttpStatus.OK);
+//            deferredResult.setResult(result);
+        });
+
+        // 业务逻辑异步处理,将处理结果 set 到 DeferredResult
+//        new Thread(new AsyncTask(deferredResult)).start();
+
+
+        CompletableFuture.runAsync(() -> {
+            new AsyncTask(deferredResult).run();
+        });
+
+//        deferredResult.setResult("good");
+
+        return deferredResult;
     }
 
 }

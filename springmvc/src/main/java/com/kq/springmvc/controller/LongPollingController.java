@@ -31,6 +31,12 @@ public class LongPollingController {
     ScheduledExecutorService threadPoolExecutor = Executors.newSingleThreadScheduledExecutor();
 
 
+    /**
+     * http://localhost:10001/longpolling/view/100
+     * @param id
+     * @param request
+     * @param response
+     */
     @RequestMapping(value="/view/{id}",method = RequestMethod.GET)
     public void getData(@PathVariable("id") String id, HttpServletRequest request,HttpServletResponse response) {
 
@@ -76,12 +82,15 @@ public class LongPollingController {
                 String data = id+":"+atomicLong.incrementAndGet()+"\n";
                 System.out.println(LocalDateTime.now()+":"+data);
 
-                ayncResponse.setHeader("Pragma", "no-cache");
-                ayncResponse.setDateHeader("Expires", 0);
-                ayncResponse.setHeader("Cache-Control", "no-cache,no-store");
+//                ayncResponse.setHeader("Pragma", "no-cache");
+//                ayncResponse.setDateHeader("Expires", 0);
+//                ayncResponse.setHeader("Cache-Control", "no-cache,no-store");
                 ayncResponse.setStatus(HttpServletResponse.SC_OK);
                 ayncResponse.getWriter().write(data);
-                ayncResponse.getWriter().flush();
+//                ayncResponse.getWriter().flush();
+
+                asyncContext.dispatch();
+
             }catch (Exception e){
                 e.printStackTrace();
             }
