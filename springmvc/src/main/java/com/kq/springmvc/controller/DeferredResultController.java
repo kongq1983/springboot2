@@ -1,6 +1,7 @@
 package com.kq.springmvc.controller;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,11 +23,13 @@ public class DeferredResultController {
     @RequestMapping("/{id}")
     public DeferredResult<ResponseEntity<String>> testProcess(@PathVariable("id") String id) {
 
-        final DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<ResponseEntity<String>>(7000L);
+        final DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<ResponseEntity<String>>(2000L);
 
         // 业务逻辑异步处理,将处理结果 set 到 DeferredResult
         new Thread(new AsyncTask(deferredResult)).start();
 
+        ResponseEntity<String> result = new ResponseEntity<String>("fail", HttpStatus.OK);
+        deferredResult.setResult(result);
         return deferredResult;
     }
 
@@ -44,7 +47,7 @@ public class DeferredResultController {
             //业务逻辑START
 
             try{
-                TimeUnit.SECONDS.sleep(6);
+                TimeUnit.SECONDS.sleep(3);
             }catch (Exception e){
                 e.printStackTrace();
             }

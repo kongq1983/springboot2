@@ -21,7 +21,12 @@ public class AsyncLongRunningServlet2 extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
+        String type = request.getParameter("type");
+        if(type!=null) {
+            response.setContentType("application/json;charset=UTF-8");
+        }else {
+            response.setContentType("text/html;charset=UTF-8");
+        }
 
         AsyncContext actx = request.startAsync();//通过request获得AsyncContent对象
 

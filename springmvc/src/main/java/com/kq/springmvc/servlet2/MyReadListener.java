@@ -33,7 +33,7 @@ public class MyReadListener implements ReadListener {
     @Override
     public void onAllDataRead() throws IOException {
         try {
-            Thread.sleep(10000);//暂停5秒，模拟耗时处理数据
+            Thread.sleep(1000);//暂停5秒，模拟耗时处理数据
             String time = ((HttpServletRequest)asyncContext.getRequest()).getParameter("time");
             PrintWriter out = asyncContext.getResponse().getWriter();
             out.write("数据读完了 time="+time);

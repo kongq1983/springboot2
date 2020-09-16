@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.AsyncContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
@@ -33,10 +34,11 @@ public class LongPollingController {
     @RequestMapping(value="/view/{id}",method = RequestMethod.GET)
     public void getData(@PathVariable("id") String id, HttpServletRequest request,HttpServletResponse response) {
 
+        request.setAttribute("org.apache.catalina.ASYNC_SUPPORTED", true);
         printHeaders(request);
         log.debug("view id={}",id);
 
-        this.addRunnable(id,response);
+        this.addRunnable(id,request,response);
 
 //        try {
 //            TimeUnit.SECONDS.sleep(30);
@@ -58,21 +60,36 @@ public class LongPollingController {
     }
 
 
-    public void addRunnable(String id , HttpServletResponse response){
+    public void addRunnable(String id , HttpServletRequest request,HttpServletResponse response){
+
+        final AsyncContext asyncContext = request.startAsync();
+        // AsyncContext.setTimeout() is incorrect, Control by oneself
+        asyncContext.setTimeout(5L);
+
+        HttpServletResponse ayncResponse = (HttpServletResponse) asyncContext.getResponse();
 
         Runnable runnable = ()->{
             try {
+                log.info("runnable is execute!");
 //                String data = id+":"+atomicLong.incrementAndGet()+"isClose="+response.getWriter()+"\n";
+
                 String data = id+":"+atomicLong.incrementAndGet()+"\n";
                 System.out.println(LocalDateTime.now()+":"+data);
-                response.getWriter().write(data);
-                response.getWriter().flush();
+
+                ayncResponse.setHeader("Pragma", "no-cache");
+                ayncResponse.setDateHeader("Expires", 0);
+                ayncResponse.setHeader("Cache-Control", "no-cache,no-store");
+                ayncResponse.setStatus(HttpServletResponse.SC_OK);
+                ayncResponse.getWriter().write(data);
+                ayncResponse.getWriter().flush();
             }catch (Exception e){
                 e.printStackTrace();
             }
         };
 
-        threadPoolExecutor.scheduleAtFixedRate(runnable,1,5, TimeUnit.SECONDS);
+//        runnable.run();
+//        threadPoolExecutor.scheduleAtFixedRate(runnable,1,5, TimeUnit.SECONDS);
+        threadPoolExecutor.schedule(runnable,3,TimeUnit.SECONDS);
 
     }
 
