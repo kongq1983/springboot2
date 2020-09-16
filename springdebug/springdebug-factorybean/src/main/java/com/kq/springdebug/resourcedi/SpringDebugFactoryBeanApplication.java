@@ -1,11 +1,11 @@
-package com.kq.springdebug.factorybean;
+package com.kq.springdebug.resourcedi;
 
 
 import com.kq.entity.Account;
-import com.kq.springdebug.factorybean.config.MessageComponent;
-import com.kq.springdebug.factorybean.config.MyConfig;
-import com.kq.springdebug.factorybean.config.SmsComponent;
-import com.kq.springdebug.factorybean.config.WeixinComponent;
+import com.kq.springdebug.resourcedi.config.MessageComponent;
+import com.kq.springdebug.resourcedi.config.MyConfig;
+import com.kq.springdebug.resourcedi.config.SmsComponent;
+import com.kq.springdebug.resourcedi.config.WeixinComponent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;

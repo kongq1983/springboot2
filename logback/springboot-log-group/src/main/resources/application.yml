@@ -1,0 +1,36 @@
+
+spring:
+  application:
+      name: springboot-logback
+#  profiles:
+#    active: test
+
+
+#  activemq:
+#    broker-url: tcp://mq.server1.com:61616
+    #user: admin
+    #password: secret
+
+
+server:
+  port: 10012
+  servlet:
+    context-path: /
+
+author: admin
+
+
+logging:
+  file:
+    name: springboot-log-group
+    path: c:/logs/springboot-log-group/
+  group:
+    task: com.kq.log.task
+    sql1: com.kq.log.dao,com.kq.log.sql
+#    logic: com.kq.log.controller,com.kq.log.service
+  level:
+    task: debug
+    sql1: debug
+    logic: debug
+
+

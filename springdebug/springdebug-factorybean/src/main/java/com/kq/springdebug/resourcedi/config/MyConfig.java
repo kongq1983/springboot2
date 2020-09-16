@@ -1,6 +1,6 @@
-package com.kq.springdebug.factorybean.config;
+package com.kq.springdebug.resourcedi.config;
 
-import com.kq.springdebug.factorybean.MyFactoryBean;
+import com.kq.springdebug.resourcedi.MyFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
