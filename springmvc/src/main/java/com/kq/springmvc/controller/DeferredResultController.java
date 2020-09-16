@@ -11,6 +11,7 @@ import org.springframework.web.context.request.async.DeferredResult;
 import java.util.concurrent.TimeUnit;
 
 /**
+ * http://localhost:10001/async/deferred/11
  * @author kq
  * @date 2020-09-15 18:55
  * @since 2020-0630
@@ -23,13 +24,27 @@ public class DeferredResultController {
     @RequestMapping("/{id}")
     public DeferredResult<ResponseEntity<String>> testProcess(@PathVariable("id") String id) {
 
-        final DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<ResponseEntity<String>>(2000L);
+        final DeferredResult<ResponseEntity<String>> deferredResult = new DeferredResult<ResponseEntity<String>>(5000L);
+
+        deferredResult.onTimeout(()->{
+            //超时后调用
+            log.info("------------------time out");
+            deferredResult.setErrorResult("timeout");
+        });
+
+        deferredResult.onCompletion(()->{
+            // 本方法在setResult输出结果后，调用
+            log.info("execute success.");
+//            ResponseEntity<String> result = new ResponseEntity<String>("success", HttpStatus.OK);
+//            deferredResult.setResult(result);
+        });
 
         // 业务逻辑异步处理,将处理结果 set 到 DeferredResult
         new Thread(new AsyncTask(deferredResult)).start();
 
-        ResponseEntity<String> result = new ResponseEntity<String>("fail", HttpStatus.OK);
-        deferredResult.setResult(result);
+
+//        ResponseEntity<String> result = new ResponseEntity<String>("fail", HttpStatus.OK);
+//        deferredResult.setResult(result);
         return deferredResult;
     }
 
@@ -45,12 +60,13 @@ public class DeferredResultController {
         public void run() {
             log.info("asyncTask execute.");
             //业务逻辑START
-
+            log.info("start----------------------------");
             try{
                 TimeUnit.SECONDS.sleep(3);
             }catch (Exception e){
                 e.printStackTrace();
             }
+            log.info("e-n-d----------------------------");
             //...
             //业务逻辑END
             result.setResult("ok");
