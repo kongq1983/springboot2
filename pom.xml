@@ -43,6 +43,7 @@
         <module>logback/springboot-logback</module>
         <module>logback/springboot-log-group</module>
         <module>logback/springboot-log-condition</module>
+        <module>mybatis-mapper-parameters</module>
     </modules>
     <packaging>pom</packaging>
 

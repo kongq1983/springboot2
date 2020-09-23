@@ -48,6 +48,15 @@
             <version>${mycommon.version}</version>
         </dependency>
 
+
+        <!-- 源码引入 mybatis的时候，才要-->
+        <dependency>
+            <groupId>org.javassist</groupId>
+            <artifactId>javassist</artifactId>
+            <version>3.24.1-GA</version>
+        </dependency>
+
+
     </dependencies>
 
 </project>

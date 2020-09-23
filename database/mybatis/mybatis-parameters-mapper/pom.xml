@@ -9,9 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.kq.database</groupId>
-    <artifactId>mybatis-mapper</artifactId>
-
+    <artifactId>mybatis-parameters-mapper</artifactId>
 
 
 </project>

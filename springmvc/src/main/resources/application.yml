@@ -17,6 +17,11 @@ server:
     context-path: /
 #  address: localhost
   remoteUrl: localhost
+  tomcat:
+#    max-connections: 10 #默认10000
+#    accept-count: 5  #默认100
+#    min-spare-threads: 10 #默认10
+    max-threads: 300 #默认200
 #  address: 192.168.6.170
 #    context-path: /producer
 

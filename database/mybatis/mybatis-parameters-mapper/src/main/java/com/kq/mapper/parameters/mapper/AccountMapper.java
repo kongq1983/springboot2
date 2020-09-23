@@ -1,4 +1,4 @@
-package com.kq.mybatis.mapper;
+package com.kq.mapper.parameters.mapper;
 
 import com.kq.entity.Account;
 import org.apache.ibatis.annotations.Insert;
@@ -6,9 +6,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import java.util.List;
-
 import java.util.Date;
+import java.util.List;
 
 /**
  * AccountMapper
@@ -19,27 +18,24 @@ import java.util.Date;
 @Mapper
 public interface AccountMapper {
 
-    @Select("select id,username,phone,province,createTime from account limit 20")
-    public List<Account> getAccountList();
-
     @Insert("insert into account(username) values(#{abc})")
     void addAccountOne(String username);
 
-    @Insert("insert into account(username) values(#{abc})")
-    void addAccountOne1(@Param("username") String username);
+    @Select("select id,username,phone,province,createTime from account limit 20")
+    public List<Account> getAccountList();
 
     @Insert("insert into account(username,phone,createTime) values(#{username},#{phone},#{createTime})")
     void addAccountNoId(Account account);
 
     @Insert("insert into account(username,phone,createTime) values(#{username},#{a.phone},#{a.createTime})")
-    void addAccountNoId1(@Param("a") Account account,@Param("username")String username);
+    void addAccountNoId1(@Param("a") Account account, @Param("username") String username);
 
 
     @Insert("insert into account(username,phone,createTime) values(#{username},#{phone},#{createTime})")
-    void addAccountNoId2(@Param("username")String username,@Param("phone")String phone,@Param("createTime")Date createTime);
+    void addAccountNoId2(@Param("username") String username, @Param("phone") String phone, @Param("createTime") Date createTime);
 
     @Insert("insert into account(username,phone,createTime) values(#{username},#{phone},#{createTime})")
-    void addAccountNoId22(String username,String phone,Date createTime);
+    void addAccountNoId22(String username, String phone, Date createTime);
 
     @Insert("insert into account(username,phone,createTime) values(#{username},#{account.phone},#{account.createTime})")
     void addAccountNoId3(Account account, String username);
