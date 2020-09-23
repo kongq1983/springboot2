@@ -87,6 +87,7 @@ public class MetaObjectTest {
 
     /**
      * CollectionWrapper只支持add、addAll
+     * 由于CollectionWrapper不支持get，通过包装BeanWrapper来访问集合的属性
      */
     @Test
     public void testCollection(){
@@ -105,11 +106,6 @@ public class MetaObjectTest {
         account.setId(100L);
         account.setUsername("guest");
         metaObject.add(account); // CollectionWrapper
-
-//        assertThat(metaObject.getValue("teacher.school.name"),equalTo("the-first-school"));
-        // 由于CollectionWrapper只支持add  addAll
-//        Long id = (Long) metaObject.getValue("[0].id"); // 会调用CollectionWrapper.get 不支持本方法
-//        System.out.println("id="+id);
 
         BeanWrapper beanWrapper = new BeanWrapper(metaObject, list);
         Account account1 = (Account)beanWrapper.get(new PropertyTokenizer("[2]"));
