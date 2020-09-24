@@ -2,6 +2,7 @@ package com.kq.mybatis.controller;
 
 import com.kq.entity.Account;
 import com.kq.mybatis.mapper.AccountMapper;
+import com.kq.mybatis.mapper.AccountXmlMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,9 @@ public class AccountController {
 
     @Autowired
     private AccountMapper accountMapper;
+
+    @Autowired
+    protected AccountXmlMapper accountXmlMapper;
 
     /***
      * http://localhost:10001/account/list

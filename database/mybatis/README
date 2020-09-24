@@ -1,0 +1,10 @@
+sa掃描mapper
+
+1. @MapperScan
+
+2. 配置bean
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="com.zz.dao.mapper" />
+</bean>
+
+3. 加註解@Mapper

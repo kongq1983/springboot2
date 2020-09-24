@@ -156,4 +156,18 @@ public class AccountController {
 
     }
 
+    /***
+     * http://localhost:10001/account/add6?username=hello
+     * @return
+     */
+    @RequestMapping("/addOne")
+    public Long addOne(Account a){
+
+
+        accountMapper.addAccountOne(a.getUsername());
+
+        return null;
+
+    }
+
 }
