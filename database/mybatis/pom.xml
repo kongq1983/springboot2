@@ -15,8 +15,7 @@
     <modules>
         <module>mybatis-mapperscan</module>
         <module>mybatis-mapper</module>
-        <module>mybatis-mapper-parameters</module>
-        <module>mybatis-mapper-parameters</module>
+        <module>mybatis-api</module>
         <module>mybatis-parameters-mapper</module>
     </modules>
 
