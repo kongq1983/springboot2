@@ -31,4 +31,11 @@ public class AccountXmlMapperTest extends ApplicationBaseTest {
 //        assertThat(true,equalTo(metaClass.hasGetter("id")));
     }
 
+    @Test
+    public void testGetById(){
+        Account account = accountXmlMapper.getAccountById(1L);
+
+        assertThat(account,notNullValue());
+    }
+
 }

@@ -11,6 +11,10 @@
 
     <artifactId>springdebug</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>springdebug-beanfactoryprocess</module>
+        <module>springdebug-beandefinitionregistry</module>
+    </modules>
 
     <dependencies>
 

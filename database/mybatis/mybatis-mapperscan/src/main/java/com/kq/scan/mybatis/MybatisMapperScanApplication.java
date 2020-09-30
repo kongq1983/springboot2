@@ -1,6 +1,9 @@
-package com.kq.mybatis;
+package com.kq.scan.mybatis;
 
+import com.kq.scan.common.MybatisBaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.annotation.MapperScans;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,7 +15,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-@MapperScan("com.kq.mybatis.mapper")
+@MapperScans({@MapperScan("com.kq.mybatis.mapper"),@MapperScan("com.kq.mybatis1.mapper")})
+//@MapperScans()
+//@MapperScan(value = {"com.kq.scan.mybatis.mapper","com.kq.scan.mybatis1.mapper"},markerInterface = MybatisBaseMapper.class,annotationClass=Mapper.class)
 public class MybatisMapperScanApplication {
 
     public static void main(String[] args) {
