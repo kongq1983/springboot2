@@ -14,6 +14,8 @@
     <modules>
         <module>springdebug-beanfactoryprocess</module>
         <module>springdebug-beandefinitionregistry</module>
+        <module>spring-aop-simple</module>
+        <module>spring-aop-minial</module>
     </modules>
 
     <dependencies>
