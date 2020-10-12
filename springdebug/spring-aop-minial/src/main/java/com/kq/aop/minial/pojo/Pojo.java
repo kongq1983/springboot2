@@ -8,6 +8,7 @@ package com.kq.aop.minial.pojo;
 public interface Pojo {
 
     public void foo();
+    public void foo1();
     public void bar();
 
 }
