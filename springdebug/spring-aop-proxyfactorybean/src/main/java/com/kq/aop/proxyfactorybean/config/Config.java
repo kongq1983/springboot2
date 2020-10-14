@@ -23,7 +23,7 @@ public class Config {
         proxyFactoryBean.setTarget(this.getUserDao());
 //        proxyFactoryBean.setTargetName("userDao");
         proxyFactoryBean.setInterceptorNames("myAspect");
-//        proxyFactoryBean.setProxyTargetClass(true); // true:cglib  false: jdk
+        proxyFactoryBean.setProxyTargetClass(true); // true:cglib  false: jdk
 
         return proxyFactoryBean;
     }

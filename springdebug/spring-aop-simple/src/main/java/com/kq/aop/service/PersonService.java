@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class PersonService {
 
     public void addPerson(String personName) {
-        System.out.println("add person " + personName);
+        System.out.println("添加用户 - add person " + personName);
     }
 
     public boolean deletePerson(String personName) {

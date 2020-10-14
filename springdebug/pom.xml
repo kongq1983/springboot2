@@ -16,6 +16,7 @@
         <module>springdebug-beandefinitionregistry</module>
         <module>spring-aop-simple</module>
         <module>spring-aop-minial</module>
+        <module>spring-aop-proxyfactorybean</module>
     </modules>
 
     <dependencies>
