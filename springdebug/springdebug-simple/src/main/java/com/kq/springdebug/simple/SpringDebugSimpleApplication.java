@@ -1,6 +1,7 @@
 package com.kq.springdebug.simple;
 
 
+import com.kq.springdebug.simple.component.Config1;
 import com.kq.springdebug.simple.component.InitAndDestory;
 import com.kq.springdebug.simple.service.ICircleA;
 import com.kq.springdebug.simple.service.ICircleB;
@@ -10,11 +11,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ComponentScan("com.kq.springdebug.simple")
+//@ComponentScan("com.kq.springdebug.simple")
+@ComponentScan
 public class SpringDebugSimpleApplication {
 
     public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(SpringDebugSimpleApplication.class);
+//        ApplicationContext context = new AnnotationConfigApplicationContext(SpringDebugSimpleApplication.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(Config1.class,SpringDebugSimpleApplication.class);
 
         ICircleA circleA = context.getBean(ICircleA.class);
         System.out.println("circleA="+circleA);
