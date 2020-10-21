@@ -16,8 +16,8 @@ import org.springframework.context.annotation.Configuration;
 public class SpringDebugSimpleApplication {
 
     public static void main(String[] args) {
-//        ApplicationContext context = new AnnotationConfigApplicationContext(SpringDebugSimpleApplication.class);
-        ApplicationContext context = new AnnotationConfigApplicationContext(Config1.class,SpringDebugSimpleApplication.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(SpringDebugSimpleApplication.class);
+//        ApplicationContext context = new AnnotationConfigApplicationContext(Config1.class,SpringDebugSimpleApplication.class);
 
         ICircleA circleA = context.getBean(ICircleA.class);
         System.out.println("circleA="+circleA);

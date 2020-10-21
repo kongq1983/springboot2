@@ -41,6 +41,11 @@ public class CircleB implements ICircleB {
         this.circleC = circleC;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "CircleB{" +
+                "circleA=" + circleA +
+                ", circleC=" + circleC +
+                '}';
+    }
 }

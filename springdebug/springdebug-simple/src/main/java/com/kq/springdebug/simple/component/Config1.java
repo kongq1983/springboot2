@@ -9,7 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
  * @since 2020-0630
  */
 //@ComponentScan
-@ComponentScan(value="com.kq.springdebug",basePackageClasses = SpringDebugSimpleApplication.class)
+//@ComponentScan(value="com.kq.springdebug",basePackageClasses = SpringDebugSimpleApplication.class)
 public class Config1 {
 
 }
