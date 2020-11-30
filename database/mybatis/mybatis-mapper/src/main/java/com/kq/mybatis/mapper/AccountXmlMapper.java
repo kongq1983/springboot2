@@ -2,7 +2,10 @@ package com.kq.mybatis.mapper;
 
 import com.kq.entity.Account;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 
 /**
@@ -17,5 +20,7 @@ public interface AccountXmlMapper {
 
     @Select("select id,username,phone,province,createTime from account where id=#{id}")
     public Account getAccountById(Long id);
+
+    public List<Account> getAccountList(@Param("ids")List<Integer> ids, @Param("username")String username);
 
 }

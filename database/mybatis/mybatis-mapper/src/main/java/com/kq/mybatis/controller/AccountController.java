@@ -1,9 +1,11 @@
 package com.kq.mybatis.controller;
 
+import com.google.common.collect.Lists;
 import com.kq.entity.Account;
 import com.kq.mybatis.mapper.AccountMapper;
 import com.kq.mybatis.mapper.AccountXmlMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -157,6 +159,25 @@ public class AccountController {
         accountMapper.addAccountNoId6(account,a.getUsername());
 
         return account.getId();
+
+    }
+
+    @RequestMapping("/view/{id}")
+    public Account getAccount(@PathVariable("id") Long id){
+
+        Account account = accountXmlMapper.getAccountById(id);
+
+        return account;
+
+    }
+
+
+    @RequestMapping("/list1")
+    public List<Account> getAccountList1(){
+
+        List<Account> list = accountXmlMapper.getAccountList(Lists.newArrayList(1,3,5,7,9),"test");
+
+        return list;
 
     }
 

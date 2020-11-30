@@ -81,6 +81,7 @@
         <redisson.spring.boot.starter.version>3.12.2</redisson.spring.boot.starter.version>
         <janino.version>3.0.10</janino.version>
         <pinyin4j.version>2.5.0</pinyin4j.version>
+        <ognl.version>3.2.10</ognl.version>
     </properties>
 
     <dependencyManagement>

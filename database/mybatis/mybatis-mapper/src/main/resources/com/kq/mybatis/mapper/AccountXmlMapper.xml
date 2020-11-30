@@ -6,4 +6,15 @@
         insert into account(username,phone,createTime) values(#{username},#{phone},#{createTime}
     </insert>
 
+    <select id="getAccountList" resultType="com.kq.entity.Account">
+        select * from account
+        <bind name="busername" value="username + '%'" />
+        where username like #{busername}
+        and id in
+        <foreach collection="ids" item="v" separator="," open="(" close=")">
+            #{v}
+        </foreach>
+
+    </select>
+
 </mapper>
