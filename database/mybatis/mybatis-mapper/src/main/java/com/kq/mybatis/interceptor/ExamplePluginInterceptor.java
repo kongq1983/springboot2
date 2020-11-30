@@ -28,7 +28,7 @@ import java.util.regex.Matcher;
  * @date 2020-11-27 10:51
  * @since 2020-0630
  */
-//@Component
+@Component
 @Intercepts({ // 注意args里的参数类型，要和Executor里面的query方法的类型一致
         @Signature(type = Executor.class, method = "query", args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}),
         @Signature(type= Executor.class,method = "update",args = {MappedStatement.class,Object.class})
