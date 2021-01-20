@@ -36,3 +36,12 @@ create table serial_test (id SERIAL);
 
 -- decimal table
 create table decimal_table(id serial, m1 decimal(20,8),m2 dec(10,2),m3 NUMERIC(8,2),m4 fixed(6,2))
+
+create table t1(a int(11));
+create table t2(a int(11),b int(11));
+create table t3(b int(11));
+
+insert into t1 values(1);
+insert into t1 values(2);
+insert into t2 values(1,101);
+insert into t3 values(101);

@@ -175,7 +175,7 @@ public class AccountController {
     @RequestMapping("/list1")
     public List<Account> getAccountList1(){
 
-        List<Account> list = accountXmlMapper.getAccountList(Lists.newArrayList(1,3,5,7,9),"test");
+        List<Account> list = accountXmlMapper.getAccountList(Lists.newArrayList(1,3,5,7,9),"test","zj");
 
         return list;
 

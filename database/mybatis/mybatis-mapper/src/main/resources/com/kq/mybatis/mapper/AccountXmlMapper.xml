@@ -9,12 +9,16 @@
     <select id="getAccountList" resultType="com.kq.entity.Account">
         select * from account
         <bind name="busername" value="username + '%'" />
-        where username like #{busername}
+        where username like #{busername} and province=#{province}
         and id in
         <foreach collection="ids" item="v" separator="," open="(" close=")">
             #{v}
         </foreach>
 
+    </select>
+
+    <select id="getUsername" resultType="java.lang.String">
+        select username from ${tablename} where id=#{id}
     </select>
 
 </mapper>

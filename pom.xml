@@ -45,6 +45,7 @@
         <module>logback/springboot-log-condition</module>
         <module>mybatis-mapper-parameters</module>
         <module>database/mybatis/mybatis-batch-test</module>
+        <module>acutator</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -21,6 +21,9 @@ public interface AccountXmlMapper {
     @Select("select id,username,phone,province,createTime from account where id=#{id}")
     public Account getAccountById(Long id);
 
-    public List<Account> getAccountList(@Param("ids")List<Integer> ids, @Param("username")String username);
+    public List<Account> getAccountList(@Param("ids")List<Integer> ids, @Param("username")String username,@Param("province") String province);
+
+//    @Select("select province from ${tablename} where id=#{id}")
+    public String getUsername(@Param("tablename") String tablename,@Param("id")Long id);
 
 }
