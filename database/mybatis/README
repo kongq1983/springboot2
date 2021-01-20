@@ -26,3 +26,12 @@ sa掃描mapper
         </list>
     </property>
 </bean>
+
+
+-- 解析xml
+org.apache.ibatis.builder.xml.XMLStatementBuilder
+-- 解析注解
+org.apache.ibatis.builder.annotation.MapperAnnotationBuilder
+
+
+org.mybatis.spring.SqlSessionFactoryBean

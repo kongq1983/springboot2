@@ -24,7 +24,7 @@
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<!-- 每天一归档 -->
-			<fileNamePattern>${FILE_DIR}/${LOG_FILE}/${elasticsearch}_%d{yyyy-MM-dd}_%i.log
+			<fileNamePattern>${FILE_DIR}/${LOG_FILE}/${LOG_FILE}_%d{yyyy-MM-dd}_%i.log
 			</fileNamePattern>
 			<maxHistory>30</maxHistory>
 			<timeBasedFileNamingAndTriggeringPolicy

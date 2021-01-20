@@ -1,0 +1,7 @@
+
+http://172.16.67.21:10001/prometheus
+
+
+启动Springboot项目，通过http://172.16.13.10:8080/prometheus已经可以访问Springboot内部定义的一些meter（统计数据）了，
+但是全是一些文字信息，极不友好。此时需要通过一个第三方工具来解析这些统计信息，Prometheus就是这样一类工具，
+通过从调用Springboot提供的acutator接口来拉取相关的统计数据进行分析和展示。

@@ -10,10 +10,11 @@ spring:
   application:
     name: elasticsearch
   datasource:
-    url: jdbc:oracle:thin:@192.168.5.248:1521:zhjkctdb
+#    url: jdbc:oracle:thin:@192.168.5.248:1521:zhjkctdb
+    url: jdbc:oracle:thin:@172.16.7.54:1521:zhjkctdb
     driver-class-name: oracle.jdbc.OracleDriver
-    username: shr
-    password: shr
+    username: xn0731
+    password: xn0731
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
       connection-timeout: 20000  # 20s
@@ -45,6 +46,6 @@ my:
   elasticsearch:
     servers:
       - { hostname: "172.16.5.1",port: 9200,scheme: "http" }
-      - { hostname: "172.16.5.3",port: 9200,scheme: "http" }
-      - { hostname: "172.16.6.204",port: 9200,scheme: "http" }
+#      - { hostname: "172.16.5.3",port: 9200,scheme: "http" }
+#      - { hostname: "172.16.6.204",port: 9200,scheme: "http" }
 
