@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
@@ -95,6 +96,21 @@ public class IndexController {
 
     }
 
+
+    @RequestMapping("/sys/info")
+    public DtoResult sysInfo(HttpServletRequest request){
+
+
+        DtoResult result = new DtoResult();
+
+        Map<String,String> map = new HashMap<>();
+
+        String name = request.getParameter("name");
+
+
+        return result;
+
+    }
 
 
 
