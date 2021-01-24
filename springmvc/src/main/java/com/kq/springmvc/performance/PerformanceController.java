@@ -27,7 +27,7 @@ public class PerformanceController {
     }
 
     @RequestMapping("/requestParams")
-    public Map<String,String> requestParams(@RequestParam("name") String name, HttpServletRequest request) {
+    public Map<String,String> requestParams(@RequestParam(name="name",required=false) String name, HttpServletRequest request) {
 
         log.info("接收参数 name :{}", name);
 
