@@ -66,7 +66,8 @@ public class TomcatCustomizer implements WebServerFactoryCustomizer<TomcatServle
             };
 
 //            scheduledExecutorService.scheduleAtFixedRate(runnable,0,30, TimeUnit.SECONDS);
-            protocol.getUtilityExecutor().scheduleAtFixedRate(runnable,0,30, TimeUnit.SECONDS);
+//            protocol.getUtilityExecutor().scheduleAtFixedRate(runnable,0,30, TimeUnit.SECONDS);
+            protocol.getUtilityExecutor().scheduleAtFixedRate(runnable,0,30, TimeUnit.MINUTES);
 
         });
     }
