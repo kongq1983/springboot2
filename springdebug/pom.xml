@@ -18,6 +18,7 @@
         <module>spring-aop-minial</module>
         <module>spring-aop-proxyfactorybean</module>
         <module>springdebug-import</module>
+        <module>springdebug-simple0</module>
     </modules>
 
     <dependencies>
