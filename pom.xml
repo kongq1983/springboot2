@@ -46,6 +46,7 @@
         <module>mybatis-mapper-parameters</module>
         <module>database/mybatis/mybatis-batch-test</module>
         <module>acutator</module>
+        <module>springboot-conditional</module>
     </modules>
     <packaging>pom</packaging>
 
