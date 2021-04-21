@@ -47,6 +47,8 @@
         <module>database/mybatis/mybatis-batch-test</module>
         <module>acutator</module>
         <module>springboot-conditional</module>
+        <module>websocket</module>
+        <module>springboot-tomcat-websocket</module>
     </modules>
     <packaging>pom</packaging>
 
