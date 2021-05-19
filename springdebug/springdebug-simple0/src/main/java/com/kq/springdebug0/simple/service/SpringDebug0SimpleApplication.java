@@ -12,16 +12,44 @@ import org.springframework.context.annotation.Configuration;
 public class SpringDebug0SimpleApplication {
 
     public static void main(String[] args) {
+
         ApplicationContext context = new AnnotationConfigApplicationContext(SpringDebug0SimpleApplication.class);
 //        ApplicationContext context = new AnnotationConfigApplicationContext(Config1.class,SpringDebugSimpleApplication.class);
 
-        ICircleA circleA = context.getBean(ICircleA.class);
+        String[] circleAs = context.getBeanNamesForType(ICircleA.class);
+        for(String c : circleAs) {
+            System.out.println("**************** circleA="+c);
+        }
+
+//        ICircleA circleA = context.getBean(ICircleA.class);
+        ICircleA circleA = (ICircleA)context.getBean("circleA");
         System.out.println("circleA="+circleA);
         circleA.showB();
 
         ICircleB circleB = context.getBean(ICircleB.class);
         System.out.println("circleB="+circleB);
         circleB.showA();
+
+        ScopeA scopeA = context.getBean(ScopeA.class);
+        System.out.println("======== scopeA="+scopeA);
+
+        scopeA = context.getBean(ScopeA.class);
+        System.out.println("======== scopeA="+scopeA);
+
+//        context.isSingleton();
+
+        String[] beanNames = context.getBeanDefinitionNames();
+
+        for(String beanName : beanNames) {
+            System.out.println("beanName="+beanName);
+        }
+
+
+//        ScopeOther scopeOther = context.getBean(ScopeOther.class);
+//        System.out.println("======== scopeOther="+scopeOther);
+
+
+
 
     }
 

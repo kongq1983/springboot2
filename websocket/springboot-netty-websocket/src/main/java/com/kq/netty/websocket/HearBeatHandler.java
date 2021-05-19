@@ -23,8 +23,9 @@ public class HearBeatHandler extends ChannelInboundHandlerAdapter {
             }else if(event.state()==IdleState.WRITER_IDLE){
                 System.out.println("写空闲");
             }else if(event.state()==IdleState.ALL_IDLE){
-                System.out.println("读写都空闲你，关闭通道");
-                ctx.channel().close();
+                System.out.println("读写都空闲");
+//                System.out.println("读写都空闲你，关闭通道 ");
+//                ctx.channel().close();
             }
         }
     }

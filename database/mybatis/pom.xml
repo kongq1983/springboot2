@@ -17,6 +17,7 @@
         <module>mybatis-mapper</module>
         <module>mybatis-api</module>
         <module>mybatis-parameters-mapper</module>
+        <module>hikaricp-test</module>
     </modules>
 
     <dependencies>
@@ -37,6 +38,15 @@
             <version>3.2.10</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/com.zaxxer/HikariCP -->
+        <!--https://github.com/brettwooldridge/HikariCP-->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+        </dependency>
+
+        <!-- <version>3.4.2</version>-->
+        <!-- <version>3.4.5</version>-->
     </dependencies>
 
 

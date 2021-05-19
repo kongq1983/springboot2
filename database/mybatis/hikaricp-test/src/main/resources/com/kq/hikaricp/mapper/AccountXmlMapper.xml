@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kq.hikaricp.mapper.AccountXmlMapper">
+
+    <insert id="addAccount" useGeneratedKeys="true" keyProperty="id">
+        insert into account(username,phone,createTime) values(#{username},#{phone},#{createTime})
+    </insert>
+
+    <select id="getAccountList" resultType="com.kq.entity.Account">
+        select * from account
+        <bind name="busername" value="username + '%'" />
+        where username like #{busername} and province=#{province}
+        and id in
+        <foreach collection="ids" item="v" separator="," open="(" close=")">
+            #{v}
+        </foreach>
+
+    </select>
+
+    <select id="getUsername" resultType="java.lang.String">
+        select username from ${tablename} where id=#{id}
+    </select>
+
+
+    <update id="deadlock">
+        update account set phone='16866668888' where id=#{id};
+    </update>
+
+</mapper>

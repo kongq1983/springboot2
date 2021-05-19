@@ -1,0 +1,12 @@
+http://localhost:10002/account/add
+
+# 默认id=20
+http://localhost:10002/account/deadlock
+
+
+HikariPool
+ProxyLeakTask
+
+show session variables like 'autocommit';
+
+set session autocommit=0;
