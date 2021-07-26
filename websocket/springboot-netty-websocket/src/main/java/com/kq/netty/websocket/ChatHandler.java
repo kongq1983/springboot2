@@ -41,13 +41,14 @@ public class ChatHandler extends SimpleChannelInboundHandler<TextWebSocketFrame>
     // 当有新的客户端连接服务器之后，会自动调用这个方法
     @Override
     public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+        System.out.println("建立连接:"+ctx);
         clients.add(ctx.channel());
     }
 
     // 端口连接处理
     @Override
     public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
-        System.out.println("断开连接");
+        System.out.println("断开连接"+ctx);
         clients.remove(ctx.channel());
     }
 }

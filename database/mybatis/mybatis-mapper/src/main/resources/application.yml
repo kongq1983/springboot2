@@ -1,15 +1,15 @@
 
 server:
   port: 10001
-  servlet:
-    context-path: /mybatis-mapper
-  address: localhost
+#  servlet:
+#    context-path: /mybatis-mapper
+#  address: localhost
 
 spring:
   application:
     name: mybatis-mapper
   datasource:
-    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
 #    url: jdbc:mysql://192.168.5.212:8066/TESTDB?useUnicode=true&characterEncoding=UTF-8
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root

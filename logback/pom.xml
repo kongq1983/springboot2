@@ -11,6 +11,9 @@
 
     <artifactId>logback</artifactId>
     <packaging>pom</packaging>
+    <modules>
+        <module>springboot-log-mdc</module>
+    </modules>
 
     <dependencies>
         <dependency>

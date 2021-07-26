@@ -19,6 +19,7 @@
         <module>spring-aop-proxyfactorybean</module>
         <module>springdebug-import</module>
         <module>springdebug-simple0</module>
+        <module>springdebug-simple2</module>
     </modules>
 
     <dependencies>
