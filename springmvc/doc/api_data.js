@@ -1,0 +1,60 @@
+define({ "api": [
+  {
+    "type": "post",
+    "url": "/employee/add",
+    "title": "添加员工",
+    "version": "1.0.1",
+    "name": "employeeAdd",
+    "group": "员工",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "int",
+            "optional": false,
+            "field": "age",
+            "defaultValue": "18",
+            "description": "<p>年龄</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "name",
+            "description": "<p>姓名</p>"
+          },
+          {
+            "group": "Parameter",
+            "type": "String",
+            "optional": false,
+            "field": "number",
+            "description": "<p>工号</p>"
+          }
+        ]
+      }
+    },
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "code",
+            "description": "<p>返回码</p>"
+          },
+          {
+            "group": "Success 200",
+            "type": "String",
+            "optional": false,
+            "field": "result",
+            "description": "<p>返回结果</p>"
+          }
+        ]
+      }
+    },
+    "filename": "src/main/java/com/kq/springmvc/controller/EmployeeController.java",
+    "groupTitle": "员工"
+  }
+] });
