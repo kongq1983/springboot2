@@ -26,4 +26,6 @@ public interface AccountXmlMapper {
 //    @Select("select province from ${tablename} where id=#{id}")
     public String getUsername(@Param("tablename") String tablename,@Param("id")Long id);
 
+    public List<Account> getAccountList1(@Param("account")Account account);
+
 }
