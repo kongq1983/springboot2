@@ -47,6 +47,7 @@
         <module>database/mybatis/mybatis-batch-test</module>
         <module>acutator</module>
         <module>spi</module>
+        <module>springboot-spi</module>
     </modules>
     <packaging>pom</packaging>
 
