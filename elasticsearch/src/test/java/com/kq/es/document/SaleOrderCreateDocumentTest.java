@@ -45,7 +45,8 @@ public class SaleOrderCreateDocumentTest extends BaseApplicationTest {
 
             IndexDto dto = new IndexDto();
             dto.setId(String.valueOf(o.getSaleOrderId()));
-            dto.setIndex("saleorder");
+//            dto.setIndex("saleorder");
+            dto.setIndex("myorder");
             dto.setJson(json);
 
             indexs.add(dto);

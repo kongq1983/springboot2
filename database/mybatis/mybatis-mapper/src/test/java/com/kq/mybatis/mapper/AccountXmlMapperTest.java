@@ -5,6 +5,8 @@ import com.kq.mybatis.ApplicationBaseTest;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 
@@ -36,6 +38,17 @@ public class AccountXmlMapperTest extends ApplicationBaseTest {
         Account account = accountXmlMapper.getAccountById(1L);
 
         assertThat(account,notNullValue());
+    }
+
+    @Test
+    public void testGetAccountList1() {
+        Account a = new Account();
+        a.setUsername("aaa");
+        a.setProvince("zj");
+        List<Account> list = this.accountXmlMapper.getAccountList1(a);
+
+        System.out.println("list="+list);
+
     }
 
 }

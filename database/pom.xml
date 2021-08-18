@@ -17,6 +17,8 @@
         <module>jdbc1</module>
         <module>jdbc2</module>
         <module>mybatis</module>
+        <module>hikaricp-test</module>
+        <module>hikaricp-test</module>
     </modules>
 
     <dependencies>
