@@ -48,6 +48,7 @@
         <module>acutator</module>
         <module>spi</module>
         <module>springboot-spi</module>
+        <module>web</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -85,6 +86,8 @@
         <janino.version>3.0.10</janino.version>
         <pinyin4j.version>2.5.0</pinyin4j.version>
         <ognl.version>3.2.10</ognl.version>
+        <!--<okhttp3.version>4.9.3</okhttp3.version>-->
+        <!--<okhttp3.version>3.14.8</okhttp3.version>-->
     </properties>
 
     <dependencyManagement>
@@ -128,6 +131,12 @@
                 <groupId>com.belerweb</groupId>
                 <artifactId>pinyin4j</artifactId>
                 <version>${pinyin4j.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.squareup.okhttp3</groupId>
+                <artifactId>okhttp</artifactId>
+                <version>${okhttp3.version}</version>
             </dependency>
 
 

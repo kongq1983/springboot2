@@ -1,0 +1,20 @@
+
+server:
+  port: 10000
+
+#前缀
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      # 下面为什么不行？ 试试打完包能不能行？有可能是idea执行运行，static目录不是classpath目录
+      # 试下static和webapp同层目录，能不能行？
+#      prefix: /jsp/
+      suffix: .jsp
+    pathmatch:
+      use-suffix-pattern: true
+#  resources: # classpath:/templates/,
+    static-locations: classpath:/static/
+
+# InternalResourceViewResolver
+#spring.mvc.view.suffix=.jsp
