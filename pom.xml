@@ -31,24 +31,25 @@
         <module>springdebug/springdebug-factorybean</module>
         <module>springsession</module>
         <module>springtask</module>
-        <module>mybatis-batch</module>
+       <!-- <module>mybatis-batch</module>-->
         <module>database/mybatis/mybatis-batch</module>
         <module>applicationlistener</module>
         <module>resttemplate</module>
         <module>springboot</module>
-        <module>springboot-importresource</module>
-        <module>springdebug-resource-di</module>
+        <!--<module>springboot-importresource</module>
+        <module>springdebug-resource-di</module>-->
         <module>logback</module>
-        <module>springboot-logback</module>
+       <!-- <module>springboot-logback</module>-->
         <module>logback/springboot-logback</module>
         <module>logback/springboot-log-group</module>
         <module>logback/springboot-log-condition</module>
-        <module>mybatis-mapper-parameters</module>
+        <!--<module>mybatis-mapper-parameters</module>-->
         <module>database/mybatis/mybatis-batch-test</module>
         <module>acutator</module>
         <module>spi</module>
-        <module>springboot-spi</module>
+       <!-- <module>springboot-spi</module>-->
         <module>web</module>
+        <module>retry</module>
     </modules>
     <packaging>pom</packaging>
 
