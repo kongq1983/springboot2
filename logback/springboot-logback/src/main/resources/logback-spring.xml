@@ -42,8 +42,34 @@
         </encoder>
     </appender>
 
+
+    <appender name="BUSINESS_LOG_APPENDER"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每天一归档 -->
+            <fileNamePattern>${FILE_DIR}/business_log_%d{yyyy-MM-dd}_%i.log
+            </fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- 最大64MB 超过最大值，会重新建一个文件 -->
+                <maxFileSize>64 MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss:SSS} %-5level [%thread] %logger{50}-%L %msg%n</pattern>
+        </encoder>
+    </appender>
+
+<!--additivity="false" 如果是false，则上一级日志，则不会打印，如果是true，则root也会打印-->
+    <logger name="businessLog" level="debug" >
+        <appender-ref ref="BUSINESS_LOG_APPENDER"/>
+    </logger>
+
     <root level="DEBUG">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
+        <!-- 不能放这里 否则全部日志 都会记录 -->
+       <!-- <appender-ref ref="BUSINESS_LOG_APPENDER" />-->
     </root>
 </configuration>

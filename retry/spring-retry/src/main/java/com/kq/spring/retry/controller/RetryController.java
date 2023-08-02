@@ -35,7 +35,7 @@ public class RetryController {
 
 
     private AtomicLong atomicLong = new AtomicLong();
-
+    // http://localhost:10005/retry/info
     @GetMapping("/info")
     public String getInfo(){
 

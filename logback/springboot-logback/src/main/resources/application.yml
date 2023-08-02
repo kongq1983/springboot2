@@ -23,6 +23,6 @@ author: admin
 logging:
   file:
     name: springboot-logback-log
-    path:
+    path: c:\\logs
 
 

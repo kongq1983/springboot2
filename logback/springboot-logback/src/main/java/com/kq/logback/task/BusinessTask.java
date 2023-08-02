@@ -6,8 +6,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import java.util.concurrent.TimeUnit;
-
 /**
  * @author kq
  * @date 2020-09-08 16:17
@@ -15,9 +13,9 @@ import java.util.concurrent.TimeUnit;
  */
 
 @Component
-public class PrintTask {
+public class BusinessTask {
 
-    protected Logger logger = LoggerFactory.getLogger(PrintTask.class);
+    protected Logger logger = LoggerFactory.getLogger(BusinessTask.class);
 
     protected Logger businessLog = LoggerFactory.getLogger(Constants.BUSINESS_LOG);
 
@@ -25,7 +23,7 @@ public class PrintTask {
     @Scheduled(fixedRate=5000)
     public void run() {
 
-        businessLog.info("------------------businessLog-开始定时器启动");
+        businessLog.info("------------------clearLog-开始定时器启动");
         logger.info("------------------开始定时器启动");
 
 //        try {
@@ -35,7 +33,7 @@ public class PrintTask {
 //        }
 
         logger.info("------------------开始定时器结束");
-        businessLog.info("------------------businessLog-结束定时器结束");
+        businessLog.info("------------------clearLog-结束定时器结束");
 
     }
 
