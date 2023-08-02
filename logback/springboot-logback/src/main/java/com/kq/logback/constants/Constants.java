@@ -9,6 +9,7 @@ package com.kq.logback.constants;
  */
 public class Constants {
 
-    public static final String BUSINESS_LOG = "businessLog";
+    public static final String BUSINESS_FAIL_LOG = "business.log.fail";
+    public static final String BUSINESS_SUCCESS_LOG = "business.log.success";
 
 }

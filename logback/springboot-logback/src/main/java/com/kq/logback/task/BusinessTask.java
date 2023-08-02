@@ -15,15 +15,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class BusinessTask {
 
-    protected Logger logger = LoggerFactory.getLogger(BusinessTask.class);
+    protected Logger logger = LoggerFactory.getLogger(Constants.BUSINESS_FAIL_LOG);
 
-    protected Logger businessLog = LoggerFactory.getLogger(Constants.BUSINESS_LOG);
+    protected Logger businessLog = LoggerFactory.getLogger(Constants.BUSINESS_SUCCESS_LOG);
 
 
     @Scheduled(fixedRate=5000)
     public void run() {
 
-        businessLog.info("------------------clearLog-开始定时器启动");
+        businessLog.info("------------------clearLog-开始定时器启动-success");
         logger.info("------------------开始定时器启动");
 
 //        try {
@@ -33,7 +33,7 @@ public class BusinessTask {
 //        }
 
         logger.info("------------------开始定时器结束");
-        businessLog.info("------------------clearLog-结束定时器结束");
+        businessLog.info("------------------clearLog-结束定时器结束-success");
 
     }
 

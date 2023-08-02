@@ -17,15 +17,15 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class PrintTask {
 
-    protected Logger logger = LoggerFactory.getLogger(PrintTask.class);
+    protected Logger logger = LoggerFactory.getLogger(Constants.BUSINESS_FAIL_LOG);
 
-    protected Logger businessLog = LoggerFactory.getLogger(Constants.BUSINESS_LOG);
+    protected Logger businessLog = LoggerFactory.getLogger(Constants.BUSINESS_SUCCESS_LOG);
 
 
     @Scheduled(fixedRate=5000)
     public void run() {
 
-        businessLog.info("------------------businessLog-开始定时器启动");
+        businessLog.info("------------------businessLog-开始定时器启动-success");
         logger.info("------------------开始定时器启动");
 
 //        try {
@@ -35,7 +35,7 @@ public class PrintTask {
 //        }
 
         logger.info("------------------开始定时器结束");
-        businessLog.info("------------------businessLog-结束定时器结束");
+        businessLog.info("------------------businessLog-结束定时器结束-success");
 
     }
 
